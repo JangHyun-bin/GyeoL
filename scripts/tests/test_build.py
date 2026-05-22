@@ -285,6 +285,14 @@ def test_premium_hero_lane_reference_and_demos_exist() -> None:
     ]:
         assert snippet in combined_html, f"hero demos missing required snippet: {snippet}"
 
+    for relative in [
+        "docs/design-qa/screenshots/hero-haneul-ir-ko.png",
+        "docs/design-qa/screenshots/hero-haneul-equity-report.png",
+        "docs/design-qa/screenshots/hero-haneul-strategy-deck.png",
+        "docs/design-qa/screenshots/hero-haneul-landing-page.png",
+    ]:
+        assert (ROOT / relative).exists(), f"missing hero screenshot: {relative}"
+
 
 def test_theme_policy_is_encoded_in_target_templates() -> None:
     document_templates = [

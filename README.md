@@ -7,6 +7,17 @@
   <a href="https://github.com/JangHyun-bin/GyeoL"><img src="https://img.shields.io/badge/skill-Gyeol-071829?style=flat-square" alt="Gyeol skill"></a>
 </div>
 
+### Investment / Strategy Proof Pack
+
+Haneul NPU Systems is fictional sample data used to show the premium hero lane across Korean and English investment deliverables. Light / Dark themes are encoded in the source templates and demonstrated in the public samples.
+
+- [Korean IR one-pager](assets/demos/hero-haneul-ir-ko.html)
+- [English investor memo](assets/demos/hero-haneul-investor-memo.html)
+- [Equity-style research report](assets/demos/hero-haneul-equity-report.html)
+- [Korean equity-style research report](assets/demos/hero-haneul-equity-report-ko.html)
+- [Korean strategy deck](assets/demos/hero-haneul-strategy-deck.html)
+- [Landing page](assets/demos/hero-haneul-landing-page.html)
+
 ## 한국어
 
 Gyeol은 Codex, Claude Code, Claude Desktop, 그리고 로컬 스킬 폴더를 읽는 에이전트가 한국어와 영어 비즈니스 문서를 바로 만들 수 있게 해주는 문서 스킬, 템플릿, 검증 저장소입니다.
@@ -137,6 +148,17 @@ Gyeol is structurally informed by [Kami](https://github.com/tw93/Kami): the repo
 | [![Slides](docs/design-qa/screenshots/demo-slides.png)](assets/demos/demo-slides.html) | [![Landing page](docs/design-qa/screenshots/demo-landing-page.png)](assets/demos/demo-landing-page.html) |
 
 All sample outputs live in `assets/demos/demo-*.html`. Browser and render QA notes live in `docs/design-qa/2026-05-22-render-qa.md`.
+
+### Investment / Strategy Proof Pack
+
+Haneul NPU Systems is fictional sample data used to demonstrate the premium hero lane across Korean and English investment deliverables. Light / Dark themes are encoded in the source templates and represented in the sample outputs.
+
+- [Korean IR one-pager](assets/demos/hero-haneul-ir-ko.html)
+- [English investor memo](assets/demos/hero-haneul-investor-memo.html)
+- [Equity-style research report](assets/demos/hero-haneul-equity-report.html)
+- [Korean equity-style research report](assets/demos/hero-haneul-equity-report-ko.html)
+- [Korean strategy deck](assets/demos/hero-haneul-strategy-deck.html)
+- [Landing page](assets/demos/hero-haneul-landing-page.html)
 
 ### Quick Start
 
