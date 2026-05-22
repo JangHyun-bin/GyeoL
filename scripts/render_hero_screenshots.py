@@ -10,8 +10,16 @@ CAPTURES = [
         "docs/design-qa/screenshots/hero-haneul-ir-ko.png",
     ),
     (
+        "assets/demos/hero-haneul-investor-memo.html",
+        "docs/design-qa/screenshots/hero-haneul-investor-memo.png",
+    ),
+    (
         "assets/demos/hero-haneul-equity-report.html",
         "docs/design-qa/screenshots/hero-haneul-equity-report.png",
+    ),
+    (
+        "assets/demos/hero-haneul-equity-report-ko.html",
+        "docs/design-qa/screenshots/hero-haneul-equity-report-ko.png",
     ),
     (
         "assets/demos/hero-haneul-strategy-deck.html",

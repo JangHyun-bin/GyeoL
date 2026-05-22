@@ -287,7 +287,9 @@ def test_premium_hero_lane_reference_and_demos_exist() -> None:
 
     for relative in [
         "docs/design-qa/screenshots/hero-haneul-ir-ko.png",
+        "docs/design-qa/screenshots/hero-haneul-investor-memo.png",
         "docs/design-qa/screenshots/hero-haneul-equity-report.png",
+        "docs/design-qa/screenshots/hero-haneul-equity-report-ko.png",
         "docs/design-qa/screenshots/hero-haneul-strategy-deck.png",
         "docs/design-qa/screenshots/hero-haneul-landing-page.png",
     ]:
