@@ -168,12 +168,21 @@
   <script>
     const root = document.documentElement;
     const toggle = document.querySelector('[data-theme-toggle]');
-    const saved = localStorage.getItem('gyeol-theme');
+    let saved = null;
+    try {
+      saved = localStorage.getItem('gyeol-theme');
+    } catch {
+      saved = null;
+    }
     if (saved) root.dataset.theme = saved;
     toggle?.addEventListener('click', () => {
       const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
-      localStorage.setItem('gyeol-theme', next);
+      try {
+        localStorage.setItem('gyeol-theme', next);
+      } catch {
+        /* Theme still changes for this page view when storage is unavailable. */
+      }
     });
   </script>
 </body>

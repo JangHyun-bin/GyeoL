@@ -147,7 +147,7 @@
   <header>
     <strong>{{product_name}}</strong>
     <div class="actions">
-      <button type="button" data-theme-toggle aria-label="Toggle theme">테마</button>
+      <button type="button" data-theme-toggle aria-label="테마 전환">테마</button>
       <a href="{{cta_url}}">{{cta_label}}</a>
     </div>
   </header>
@@ -169,12 +169,21 @@
   <script>
     const root = document.documentElement;
     const toggle = document.querySelector('[data-theme-toggle]');
-    const saved = localStorage.getItem('gyeol-theme');
+    let saved = null;
+    try {
+      saved = localStorage.getItem('gyeol-theme');
+    } catch {
+      saved = null;
+    }
     if (saved) root.dataset.theme = saved;
     toggle?.addEventListener('click', () => {
       const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
-      localStorage.setItem('gyeol-theme', next);
+      try {
+        localStorage.setItem('gyeol-theme', next);
+      } catch {
+        /* Theme still changes for this page view when storage is unavailable. */
+      }
     });
   </script>
 </body>
