@@ -1,66 +1,161 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <title>에이전트를 위한 네이티브 문서 레이어 만들기</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>결 문서 시스템즈 투자 메모</title>
   <style>
-    @page { size: A4; margin: 20mm 18mm; }
-    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --blue:#1863dc; --font:Pretendard, "Noto Sans KR", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    @page { size: A4; margin: 18mm; }
+    :root {
+      --canvas: #fbfaf7;
+      --surface: #ffffff;
+      --ink: #17171c;
+      --muted: #656779;
+      --hairline: #dddfe8;
+      --band: #071829;
+      --accent: #1863dc;
+      --semiconductor: #0f766e;
+      --font: Pretendard, "Noto Sans KR", Inter, system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    [data-theme="dark"] {
+      --canvas: #080d14;
+      --surface: #101824;
+      --ink: #f5f7fb;
+      --muted: #a8b0c2;
+      --hairline: #263244;
+      --band: #dfe8ff;
+      --accent: #7fb4ff;
+      --semiconductor: #6ee7c8;
+    }
     * { box-sizing: border-box; }
-    body { color: var(--ink); font-family: var(--font); line-height: 1.62; margin: 0; word-break: keep-all; }
-    @media screen { body { padding: 20mm 18mm; } }
-    .cover { border-bottom: 1px solid var(--hairline); padding-bottom: 24px; }
-    .kicker { color: var(--blue); font-family: var(--mono); font-size: 11px; }
-    h1 { font-size: 40px; font-weight: 650; line-height: 1.16; margin: 14px 0; }
-    .lede { color: var(--slate); font-size: 17px; max-width: 680px; }
-    .meta { display: flex; gap: 20px; font-family: var(--mono); font-size: 11px; margin-top: 22px; }
-    section { border-bottom: 1px solid var(--hairline); padding: 24px 0; }
-    h2 { font-size: 23px; margin: 0 0 10px; }
-    p { margin: 0 0 12px; }
-    .callout { background: var(--mineral); border-radius: 8px; margin: 18px 0; padding: 16px; }
-    .twocol { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+    html, body { background: var(--canvas); }
+    body {
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.66;
+      margin: 0;
+      word-break: keep-all;
+    }
+    @media screen { body { padding: 18mm; } }
+    .page { display: grid; gap: 18px; }
+    header {
+      border-bottom: 1px solid var(--hairline);
+      display: grid;
+      gap: 14px;
+      padding-bottom: 20px;
+    }
+    .notice {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+    .masthead {
+      align-items: end;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr auto;
+    }
+    h1 {
+      color: var(--band);
+      font-size: 34px;
+      font-weight: 680;
+      line-height: 1.14;
+      margin: 0;
+    }
+    .company {
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+    .summary {
+      background: var(--band);
+      border-radius: 8px;
+      color: var(--canvas);
+      padding: 18px 20px;
+    }
+    .summary h2,
+    section h2 {
+      font-size: 15px;
+      line-height: 1.3;
+      margin: 0 0 8px;
+    }
+    .summary p,
+    section p { margin: 0; }
+    .memo-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      min-height: 92px;
+      padding: 16px;
+    }
+    section h2 { color: var(--semiconductor); }
+    .full { grid-column: 1 / -1; }
+    .investment-view {
+      border-left: 4px solid var(--accent);
+    }
+    @media print {
+      html, body { background: transparent; }
+      body { font-size: 12px; }
+      section, .summary { break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
-  <article>
-    <header class="cover">
-      <div class="kicker">전략 리포트</div>
-      <h1>에이전트를 위한 네이티브 문서 레이어 만들기</h1>
-      <p class="lede">에이전트 문서 품질이 프롬프트만이 아니라 언어별 템플릿과 검증 체계에 달려 있다는 점을 정리한 리포트입니다.</p>
-      <div class="meta"><span>Gyeol Team</span><span>2026-05-22</span><span>Draft for review</span></div>
+  <article class="page">
+    <header>
+      <div class="notice">템플릿 검토를 위한 가상 샘플 데이터입니다.</div>
+      <div class="masthead">
+        <h1>템플릿 네이티브 문서 스택 투자 메모</h1>
+        <div class="company">결 문서 시스템즈</div>
+      </div>
     </header>
 
-    <section>
+    <section class="summary">
       <h2>핵심 요약</h2>
-      <p>가장 큰 레버리지는 문서 품질을 repo의 책임으로 두는 것입니다. 템플릿, 레퍼런스, 데모, 검증을 함께 관리해야 합니다.</p>
-      <div class="callout">한국어와 영어가 한 시스템 안에 있을수록 레이아웃만큼 네이티브 문장 규칙이 중요합니다.</div>
+      <p>결은 템플릿, 샘플 데이터, 검증으로 에이전트 초안을 검토 가능한 비즈니스 문서로 바꾸는 방식을 보여줍니다.</p>
     </section>
 
-    <section>
-      <h2>맥락</h2>
-      <p>에이전트는 빠르게 초안을 만들지만, 제약이 없으면 톤과 위계, 산출물 형태가 매번 달라집니다.</p>
-    </section>
-
-    <section class="twocol">
-      <div>
-        <h2>근거</h2>
-        <p>Kami는 skill과 template registry가 문서 생성을 반복 가능하게 만든다는 점을 보여줍니다. 결은 그 구조를 한국어와 영어에 맞게 다시 설계합니다.</p>
-      </div>
-      <div>
-        <h2>시사점</h2>
-        <p>시각 품질을 암묵적으로 믿지 말고 데모와 QA 기록으로 확인해야 합니다.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>제안</h2>
-      <p>각 템플릿을 제품 화면처럼 다루고, 샘플 데이터와 브라우저 리뷰, 렌더 경로를 붙입니다.</p>
-    </section>
-
-    <section>
-      <h2>다음 실행</h2>
-      <p>filled demo를 생성하고 브라우저에서 확인한 뒤, 의존성이 정리되면 PDF 렌더를 추가합니다.</p>
-    </section>
+    <div class="memo-grid">
+      <section>
+        <h2>왜 지금인가</h2>
+        <p>에이전트 생성 산출물이 실험에서 반복 가능한 운영 워크플로로 이동하고 있습니다.</p>
+      </section>
+      <section>
+        <h2>제품 접점</h2>
+        <p>제품 표면은 생성된 증명 예시를 포함한 복사 가능한 템플릿 레지스트리입니다.</p>
+      </section>
+      <section>
+        <h2>시장 진입점</h2>
+        <p>구조, 톤, 근거 밀도가 중요한 투자자 및 전략 문서부터 시작합니다.</p>
+      </section>
+      <section>
+        <h2>비즈니스 모델</h2>
+        <p>도입은 내부 문서 표준에서 시작해 패키지형 워크플로로 확장됩니다.</p>
+      </section>
+      <section>
+        <h2>기술 해자</h2>
+        <p>템플릿 메타데이터, 채워진 데모, 검증이 언어 간 반복성을 지킵니다.</p>
+      </section>
+      <section>
+        <h2>리스크 등록부</h2>
+        <p>템플릿 드리프트, 약한 샘플 데이터, 누락된 시각 QA가 주요 운영 리스크입니다.</p>
+      </section>
+      <section class="full investment-view">
+        <h2>투자 관점</h2>
+        <p>이 기회는 이중언어 문장 품질과 반복 가능한 구조가 모두 필요한 곳에서 가장 큽니다.</p>
+      </section>
+    </div>
   </article>
 </body>
 </html>

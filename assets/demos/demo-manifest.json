@@ -126,6 +126,54 @@
       "kind": "screen",
       "template": "assets/templates/landing-page-ko.html",
       "path": "assets/demos/demo-landing-page-ko.html"
+    },
+    {
+      "hero": true,
+      "name": "hero-haneul-ir-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/one-pager-ko.html",
+      "path": "assets/demos/hero-haneul-ir-ko.html"
+    },
+    {
+      "hero": true,
+      "name": "hero-haneul-investor-memo",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/long-doc.html",
+      "path": "assets/demos/hero-haneul-investor-memo.html"
+    },
+    {
+      "hero": true,
+      "name": "hero-haneul-equity-report",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/equity-report.html",
+      "path": "assets/demos/hero-haneul-equity-report.html"
+    },
+    {
+      "hero": true,
+      "name": "hero-haneul-equity-report-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/equity-report-ko.html",
+      "path": "assets/demos/hero-haneul-equity-report-ko.html"
+    },
+    {
+      "hero": true,
+      "name": "hero-haneul-strategy-deck",
+      "language": "ko",
+      "kind": "slides",
+      "template": "assets/templates/slides-ko.html",
+      "path": "assets/demos/hero-haneul-strategy-deck.html"
+    },
+    {
+      "hero": true,
+      "name": "hero-haneul-landing-page",
+      "language": "en",
+      "kind": "screen",
+      "template": "assets/templates/landing-page.html",
+      "path": "assets/demos/hero-haneul-landing-page.html"
     }
   ]
 }

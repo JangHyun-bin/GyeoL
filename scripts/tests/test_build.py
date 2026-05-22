@@ -253,6 +253,8 @@ def test_github_linguist_ignores_generated_outputs_only() -> None:
 
 
 def test_premium_hero_lane_reference_and_demos_exist() -> None:
+    from scripts import demos
+
     reference_path = ROOT / "references/hero-haneul-npu.json"
     assert reference_path.exists(), "missing hero reference data"
     data = json.loads(reference_path.read_text(encoding="utf-8"))
@@ -261,14 +263,26 @@ def test_premium_hero_lane_reference_and_demos_exist() -> None:
     assert data["company"]["fictional"] is True
     assert "on-device NPU" in data["company"]["positioning"]
     assert "low-power inference chiplet" in data["company"]["moat"]
+    assert len(demos.HERO_DEMOS) == len(shared.HERO_DEMOS)
 
+    combined_html = ""
     for relative in shared.HERO_DEMOS:
         path = ROOT / relative
         assert path.exists(), f"missing hero demo: {relative}"
         html = path.read_text(encoding="utf-8")
+        combined_html += html
         assert "{{" not in html and "}}" not in html
         assert "Haneul NPU Systems" in html or "하늘 NPU 시스템즈" in html
-        assert "fictional sample data" in html or "가상 샘플 데이터" in html
+
+    for snippet in [
+        "Haneul NPU Systems",
+        "fictional sample data",
+        "하늘 NPU 시스템즈",
+        "가상 샘플 데이터",
+        "low-power inference chiplet",
+        "on-device NPU",
+    ]:
+        assert snippet in combined_html, f"hero demos missing required snippet: {snippet}"
 
 
 def test_theme_policy_is_encoded_in_target_templates() -> None:
@@ -324,7 +338,8 @@ def test_demo_generation_creates_filled_outputs() -> None:
     from scripts import demos
 
     manifest = demos.generate_all()
-    assert len(manifest["demos"]) == len(shared.HTML_TEMPLATES)
+    expected_demo_count = len(shared.HTML_TEMPLATES) + len(demos.HERO_DEMOS)
+    assert len(manifest["demos"]) == expected_demo_count
 
     manifest_path = ROOT / "assets/demos/demo-manifest.json"
     assert manifest_path.exists()
@@ -343,7 +358,7 @@ def test_demo_generation_creates_filled_outputs() -> None:
         capture_output=True,
     )
     assert result.returncode == 0, result.stdout + result.stderr
-    assert "OK: generated 18 demo HTML file(s)" in result.stdout
+    assert f"OK: generated {expected_demo_count} demo HTML file(s)" in result.stdout
 
 
 def test_build_check_passes() -> None:

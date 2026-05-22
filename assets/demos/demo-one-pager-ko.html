@@ -1,76 +1,236 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <title>에이전트 문서를 위한 차분한 운영 체계</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>결 문서 시스템즈 IR 원페이지</title>
   <style>
-    @page { size: A4; margin: 18mm; }
+    @page { size: A4; margin: 16mm; }
     :root {
-      --canvas: #ffffff;
-      --mineral: #f4f3ee;
+      --canvas: #fbfaf7;
+      --surface: #ffffff;
       --ink: #17171c;
-      --slate: #61616f;
-      --hairline: #dedee6;
-      --dark: #071829;
-      --blue: #1863dc;
-      --font: Pretendard, "Noto Sans KR", system-ui, sans-serif;
+      --muted: #656779;
+      --hairline: #dddfe8;
+      --band: #071829;
+      --accent: #1863dc;
+      --semiconductor: #0f766e;
+      --font: Pretendard, "Noto Sans KR", Inter, system-ui, sans-serif;
       --mono: "JetBrains Mono", ui-monospace, monospace;
     }
+    [data-theme="dark"] {
+      --canvas: #080d14;
+      --surface: #101824;
+      --ink: #f5f7fb;
+      --muted: #a8b0c2;
+      --hairline: #263244;
+      --band: #dfe8ff;
+      --accent: #7fb4ff;
+      --semiconductor: #6ee7c8;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--font); line-height: 1.55; word-break: keep-all; }
-    @media screen { body { padding: 18mm; } }
-    .page { min-height: 261mm; display: grid; gap: 18px; grid-template-rows: auto auto 1fr auto; }
-    header { border-bottom: 1px solid var(--hairline); padding-bottom: 16px; }
-    .kicker { color: var(--blue); font-family: var(--mono); font-size: 11px; margin-bottom: 12px; }
-    h1 { font-size: 36px; font-weight: 650; line-height: 1.16; margin: 0; }
-    .subtitle { color: var(--slate); font-size: 15px; max-width: 620px; }
-    .summary { background: var(--dark); border-radius: 8px; color: #ffffff; padding: 18px; }
-    .summary h2, .section h2 { font-size: 14px; margin: 0 0 10px; }
-    .grid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
-    .section { border: 1px solid var(--hairline); border-radius: 8px; padding: 16px; }
-    .metric-row { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
-    .metric { background: var(--mineral); border-radius: 6px; padding: 12px; }
-    .metric strong { display: block; font-size: 22px; }
-    footer { border-top: 1px solid var(--hairline); color: var(--slate); font-family: var(--mono); font-size: 11px; padding-top: 12px; }
+    html { background: var(--canvas); }
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.58;
+      word-break: keep-all;
+    }
+    @media screen { body { padding: 16mm; } }
+    .page {
+      min-height: 265mm;
+      display: grid;
+      gap: 16px;
+      grid-template-rows: auto auto auto 1fr auto auto;
+    }
+    header {
+      display: grid;
+      gap: 12px;
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 16px;
+    }
+    .notice {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+    }
+    h1 {
+      margin: 0;
+      color: var(--band);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.12;
+    }
+    .label {
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 6px 10px;
+      white-space: nowrap;
+    }
+    .metric-rail {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .metric-rail .metric {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      min-height: 74px;
+      padding: 13px;
+    }
+    .metric-rail strong {
+      display: block;
+      color: var(--semiconductor);
+      font-family: var(--mono);
+      font-size: 18px;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+    .metric-rail span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+    .thesis-block {
+      background: var(--band);
+      border-radius: 8px;
+      color: var(--canvas);
+      padding: 18px 20px;
+    }
+    .thesis-block h2,
+    .panel h2,
+    .risk-grid h2,
+    .decision-bar h2 {
+      font-size: 11px;
+      font-family: var(--mono);
+      letter-spacing: 0;
+      margin: 0 0 9px;
+    }
+    .thesis-block p {
+      font-size: 17px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .two-column {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .panel h2 { color: var(--accent); }
+    .panel p { margin: 0; }
+    .risk-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .risk-grid article {
+      border-left: 3px solid var(--semiconductor);
+      background: var(--surface);
+      border-radius: 8px;
+      box-shadow: inset 0 0 0 1px var(--hairline);
+      padding: 14px 15px;
+    }
+    .risk-grid h2 { color: var(--muted); }
+    .risk-grid p { margin: 0; }
+    .decision-bar {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .decision-bar h2 {
+      color: var(--accent);
+      margin: 0;
+      white-space: nowrap;
+    }
+    .decision-bar p { margin: 0; }
+    .source-note {
+      border-top: 1px solid var(--hairline);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      padding-top: 10px;
+    }
+    @media print {
+      body { font-size: 12px; }
+      .page { min-height: auto; }
+      .metric-rail, .two-column, .risk-grid { break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
   <main class="page">
     <header>
-      <div class="kicker">시장 브리프</div>
-      <h1>에이전트 문서를 위한 차분한 운영 체계</h1>
-      <p class="subtitle">결은 흩어진 메모를 한국어와 영어 비즈니스 문서로 안정적으로 바꾸는 문서 스택입니다.</p>
+      <div class="notice">템플릿 검토를 위한 가상 샘플 데이터입니다.</div>
+      <div class="masthead">
+        <h1>결 문서 시스템즈</h1>
+        <div class="label">IR 원페이지</div>
+      </div>
     </header>
 
-    <section class="summary">
-      <h2>결정</h2>
-      <p>투자 메모, 내부 원페이지, 주간 전략 브리프에 결을 우선 적용합니다.</p>
+    <section class="metric-rail" aria-label="투자 지표">
+      <div class="metric"><strong>18</strong><span>수요 신호</span></div>
+      <div class="metric"><strong>2</strong><span>실행 근거</span></div>
+      <div class="metric"><strong>0</strong><span>자본 집중도</span></div>
     </section>
 
-    <section class="grid">
-      <article class="section">
-        <h2>근거</h2>
-        <p>기존 워크플로는 레이아웃이 매번 달라지고 한국어 문장 호흡이 쉽게 어색해집니다.</p>
+    <section class="thesis-block">
+      <h2>투자 논지</h2>
+      <p>재사용 가능한 문서 레이어는 에이전트 산출물을 검토하고 비교하고 배포하기 쉽게 만듭니다.</p>
+    </section>
+
+    <section class="two-column">
+      <article class="panel">
+        <h2>시장 진입점</h2>
+        <p>구조, 톤, 근거 밀도가 중요한 투자자 및 전략 문서부터 시작합니다.</p>
       </article>
-      <article class="section">
-        <h2>리스크</h2>
-        <p>템플릿이 문서의 판단보다 형식을 앞세우면 실제 업무성이 떨어질 수 있습니다.</p>
-      </article>
-      <article class="section">
-        <h2>실행 계획</h2>
-        <p>원페이지와 긴 문서를 먼저 검증하고, 시각 리뷰 후 렌더 데모를 확장합니다.</p>
-      </article>
-      <article class="section">
-        <h2>지표</h2>
-        <div class="metric-row">
-          <div class="metric"><strong>18</strong>검증 템플릿</div>
-          <div class="metric"><strong>2</strong>네이티브 언어</div>
-          <div class="metric"><strong>0</strong>fork 파일</div>
-        </div>
+      <article class="panel">
+        <h2>기술 해자</h2>
+        <p>템플릿 메타데이터, 채워진 데모, 검증이 언어 간 반복성을 지킵니다.</p>
       </article>
     </section>
 
-    <footer>Demo output generated from Gyeol sample data.</footer>
+    <section class="risk-grid" aria-label="위험 요인">
+      <article>
+        <h2>위험 01</h2>
+        <p>팀이 템플릿을 더 나은 검토 화면이 아니라 최종 원고로 오해할 수 있습니다.</p>
+      </article>
+      <article>
+        <h2>위험 02</h2>
+        <p>템플릿 변경 뒤 생성 예시를 확인하지 않으면 시각 품질이 흔들릴 수 있습니다.</p>
+      </article>
+    </section>
+
+    <section class="decision-bar">
+      <h2>다음 의사결정</h2>
+      <p>문서군 하나를 고르고 채워진 결과를 검토한 뒤 워크플로를 표준화합니다.</p>
+    </section>
+
+    <footer class="source-note">투자자 검토용 샘플입니다. 외부 공유 전 운영 지표, 시장 주장, 기술 근거를 반드시 검증하십시오.</footer>
   </main>
 </body>
 </html>

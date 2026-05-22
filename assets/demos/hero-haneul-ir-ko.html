@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="ko" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gyeol Document Systems IR One-Pager</title>
+  <title>하늘 NPU 시스템즈 IR 원페이지</title>
   <style>
     @page { size: A4; margin: 16mm; }
     :root {
@@ -36,7 +36,8 @@
       color: var(--ink);
       font-family: var(--font);
       font-size: 13px;
-      line-height: 1.48;
+      line-height: 1.58;
+      word-break: keep-all;
     }
     @media screen { body { padding: 16mm; } }
     .page {
@@ -55,8 +56,6 @@
       color: var(--accent);
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: 0;
-      text-transform: uppercase;
     }
     .masthead {
       display: grid;
@@ -67,9 +66,9 @@
     h1 {
       margin: 0;
       color: var(--band);
-      font-size: 34px;
-      font-weight: 680;
-      line-height: 1.05;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.12;
     }
     .label {
       border: 1px solid var(--hairline);
@@ -78,7 +77,6 @@
       font-family: var(--mono);
       font-size: 10px;
       padding: 6px 10px;
-      text-transform: uppercase;
       white-space: nowrap;
     }
     .metric-rail {
@@ -106,7 +104,6 @@
       color: var(--muted);
       font-size: 11px;
       margin-top: 6px;
-      text-transform: uppercase;
     }
     .thesis-block {
       background: var(--band);
@@ -122,11 +119,10 @@
       font-family: var(--mono);
       letter-spacing: 0;
       margin: 0 0 9px;
-      text-transform: uppercase;
     }
     .thesis-block p {
-      font-size: 18px;
-      line-height: 1.42;
+      font-size: 17px;
+      line-height: 1.5;
       margin: 0;
     }
     .two-column {
@@ -189,52 +185,52 @@
 <body>
   <main class="page">
     <header>
-      <div class="notice">Demo sample data for template review.</div>
+      <div class="notice">Gyeol 데모를 위한 가상 샘플 데이터입니다. 투자 의견이 아닙니다.</div>
       <div class="masthead">
-        <h1>Gyeol Document Systems</h1>
-        <div class="label">IR One-Pager</div>
+        <h1>하늘 NPU 시스템즈</h1>
+        <div class="label">IR 원페이지</div>
       </div>
     </header>
 
-    <section class="metric-rail" aria-label="Investor metrics">
-      <div class="metric"><strong>18</strong><span>Demand signal</span></div>
-      <div class="metric"><strong>2</strong><span>Execution proof</span></div>
-      <div class="metric"><strong>0</strong><span>Capital focus</span></div>
+    <section class="metric-rail" aria-label="투자 지표">
+      <div class="metric"><strong>42%</strong><span>수요 신호</span></div>
+      <div class="metric"><strong>3 pilot OEMs</strong><span>실행 근거</span></div>
+      <div class="metric"><strong>24 months</strong><span>자본 집중도</span></div>
     </section>
 
     <section class="thesis-block">
-      <h2>Investment Thesis</h2>
-      <p>A reusable document layer makes agent output easier to review, compare, and ship.</p>
+      <h2>투자 논지</h2>
+      <p>하늘 NPU 시스템즈는 프리미엄 모바일과 노트북 OEM의 on-device NPU 채택에 집중하는 가상 한국 팹리스 기업입니다.</p>
     </section>
 
     <section class="two-column">
       <article class="panel">
-        <h2>Market Wedge</h2>
-        <p>Start with investor and strategy documents where structure, tone, and evidence density matter.</p>
+        <h2>시장 진입점</h2>
+        <p>민감한 사용자 데이터를 클라우드 추론으로 보내지 않고 비공개 저지연 AI 기능이 필요한 OEM부터 진입합니다.</p>
       </article>
       <article class="panel">
-        <h2>Technology Moat</h2>
-        <p>Template metadata, filled demos, and checks keep the system repeatable across languages.</p>
+        <h2>기술 해자</h2>
+        <p>핵심 방어력은 38 TOPS 프로토타입 목표로 검증 중인 low-power inference chiplet과 재사용 가능한 NPU IP 플랫폼입니다.</p>
       </article>
     </section>
 
-    <section class="risk-grid" aria-label="Risks">
+    <section class="risk-grid" aria-label="위험 요인">
       <article>
-        <h2>Risk 01</h2>
-        <p>Teams may treat templates as final copy instead of a stronger review surface.</p>
+        <h2>위험 01</h2>
+        <p>고객 전환은 대형 디바이스 제조사의 검증 주기와 실리콘 로드맵에 좌우됩니다.</p>
       </article>
       <article>
-        <h2>Risk 02</h2>
-        <p>Visual quality can drift if generated examples are not inspected after template changes.</p>
+        <h2>위험 02</h2>
+        <p>계획은 선단 공정 공급 접근성과 로컬 AI 추론 수요가 지속된다는 가정에 기대고 있습니다.</p>
       </article>
     </section>
 
     <section class="decision-bar">
-      <h2>Next Decision</h2>
-      <p>Pick one document family, review filled output, then standardize the workflow.</p>
+      <h2>다음 의사결정</h2>
+      <p>고객 파일럿, 파운드리 용량, 토큰당 전력 벤치마크를 중심으로 다음 실사 스프린트를 승인합니다.</p>
     </section>
 
-    <footer class="source-note">Prepared as an investor-facing proof sample. Validate all operating metrics, market claims, and technical references before external use.</footer>
+    <footer class="source-note">투자자 검토용 샘플입니다. 외부 공유 전 운영 지표, 시장 주장, 기술 근거를 반드시 검증하십시오.</footer>
   </main>
 </body>
 </html>
