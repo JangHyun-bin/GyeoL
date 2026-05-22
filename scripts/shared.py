@@ -44,7 +44,9 @@ SCREEN_PAGES = {
 PLANNED_TEMPLATES = ()
 
 REQUIRED_PROJECT_FILES = (
+    ".gitattributes",
     "README.md",
+    "CHEATSHEET.md",
     "SKILL.md",
     "AGENTS.md",
     "docs/onboarding.md",
@@ -57,6 +59,8 @@ REQUIRED_PROJECT_FILES = (
     "LICENSE",
     "styles.css",
     "scripts/package_skill.py",
+    "references/brand-profile.md",
+    "references/brand.example.md",
     "references/kami.md",
     "references/cohere.md",
     "references/design.md",

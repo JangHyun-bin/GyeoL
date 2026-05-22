@@ -155,6 +155,24 @@ def check_agent_distribution() -> list[str]:
     return errors
 
 
+def check_linguist_attributes() -> list[str]:
+    path = shared.project_path(".gitattributes")
+    if not path.exists():
+        return ["missing .gitattributes"]
+    attributes = path.read_text(encoding="utf-8")
+    errors: list[str] = []
+    for rule in (
+        "assets/demos/** linguist-generated=true",
+        "docs/design-qa/screenshots/** linguist-generated=true",
+        "dist/** linguist-generated=true",
+    ):
+        if rule not in attributes:
+            errors.append(f".gitattributes missing Linguist rule: {rule}")
+    if "assets/templates/** linguist-generated=true" in attributes:
+        errors.append("assets/templates must remain part of GitHub language stats")
+    return errors
+
+
 def run_check() -> int:
     errors: list[str] = []
     errors.extend(check_required_files())
@@ -163,6 +181,7 @@ def run_check() -> int:
     errors.extend(check_reference_json())
     errors.extend(check_credit_language())
     errors.extend(check_agent_distribution())
+    errors.extend(check_linguist_attributes())
 
     if errors:
         for message in errors:
@@ -174,6 +193,7 @@ def run_check() -> int:
     print(_ok(f"{len(shared.REFERENCE_JSON_FILES)} JSON reference file(s) are valid"))
     print(_ok("Kami credit and Gyeol identity references are present"))
     print(_ok("agent onboarding and distribution metadata are present"))
+    print(_ok("GitHub Linguist generated-output rules are present"))
     return 0
 
 

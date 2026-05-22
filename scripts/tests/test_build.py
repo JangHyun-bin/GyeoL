@@ -115,6 +115,75 @@ def test_agent_onboarding_docs_cover_install_paths() -> None:
     assert "Codex" in onboarding and "Claude Code" in onboarding and "Claude Desktop" in onboarding
 
 
+def test_readme_has_demo_and_trust_surface() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+
+    assert readme.index("## 한국어") < readme.index("## English")
+    required_sections = [
+        "### 결과 보기",
+        "### 프롬프트 예시",
+        "### 브랜드 프로필",
+        "### 디자인 규칙",
+        "### See It",
+        "### Example Prompts",
+        "### Brand Profile",
+        "### Design Rules",
+    ]
+    for section in required_sections:
+        assert section in readme, f"README.md missing section: {section}"
+
+    demo_assets = [
+        "docs/design-qa/screenshots/demo-one-pager-ko.png",
+        "docs/design-qa/screenshots/demo-one-pager.png",
+        "docs/design-qa/screenshots/demo-long-doc.png",
+        "docs/design-qa/screenshots/demo-slides.png",
+        "docs/design-qa/screenshots/demo-landing-page.png",
+    ]
+    for asset in demo_assets:
+        assert (ROOT / asset).exists(), f"missing README demo asset: {asset}"
+        assert asset in readme, f"README.md must showcase {asset}"
+
+    for snippet in [
+        "CHEATSHEET.md",
+        "references/brand.example.md",
+        "~/.config/gyeol/brand.md",
+        "Use Gyeol to create a Korean equity report",
+        "Gyeol로 한국어 이력서를 만들어줘",
+        "Apply the Gyeol design system",
+    ]:
+        assert snippet in readme, f"README.md missing trust-surface snippet: {snippet}"
+
+
+def test_brand_profile_and_cheatsheet_are_wired_into_skill() -> None:
+    required = [
+        "CHEATSHEET.md",
+        "references/brand-profile.md",
+        "references/brand.example.md",
+    ]
+    for relative in required:
+        assert (ROOT / relative).exists(), f"missing skill support doc: {relative}"
+
+    skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+    cheatsheet = (ROOT / "CHEATSHEET.md").read_text(encoding="utf-8")
+    brand_profile = (ROOT / "references/brand-profile.md").read_text(encoding="utf-8")
+    brand_example = (ROOT / "references/brand.example.md").read_text(encoding="utf-8")
+
+    for snippet in [
+        "~/.config/gyeol/brand.md",
+        "references/brand-profile.md",
+        "CHEATSHEET.md",
+    ]:
+        assert snippet in skill, f"SKILL.md missing support doc reference: {snippet}"
+
+    assert "explicit prompt" in brand_profile
+    assert "document judgment" in brand_profile
+    assert "built-in defaults" in brand_profile
+    assert "language:" in brand_example
+    assert "brand_color:" in brand_example
+    assert "Template Selection" in cheatsheet
+    assert "Verification" in cheatsheet
+
+
 def test_agent_distribution_metadata_and_package_are_ready() -> None:
     required = [
         "agents/openai.yaml",
@@ -122,6 +191,9 @@ def test_agent_distribution_metadata_and_package_are_ready() -> None:
         ".claude/launch.json",
         "scripts/package_skill.py",
         "llms.txt",
+        "CHEATSHEET.md",
+        "references/brand-profile.md",
+        "references/brand.example.md",
     ]
     for relative in required:
         assert (ROOT / relative).exists(), f"missing agent distribution file: {relative}"
@@ -154,10 +226,30 @@ def test_agent_distribution_metadata_and_package_are_ready() -> None:
         "assets/templates/one-pager.html",
         "assets/templates/one-pager-ko.html",
         "references/writing.md",
+        "references/brand-profile.md",
+        "references/brand.example.md",
+        "CHEATSHEET.md",
         "scripts/build.py",
     ]:
         assert relative in names, f"skill ZIP missing {relative}"
     assert not any(name.startswith(".git/") or "__pycache__/" in name for name in names)
+
+
+def test_github_linguist_ignores_generated_outputs_only() -> None:
+    attributes_path = ROOT / ".gitattributes"
+    assert attributes_path.exists(), "missing .gitattributes"
+    attributes = attributes_path.read_text(encoding="utf-8")
+
+    required_rules = [
+        "assets/demos/** linguist-generated=true",
+        "docs/design-qa/screenshots/** linguist-generated=true",
+        "dist/** linguist-generated=true",
+    ]
+    for rule in required_rules:
+        assert rule in attributes, f".gitattributes missing Linguist rule: {rule}"
+
+    assert "assets/templates/** linguist-generated=true" not in attributes
+    assert "assets/templates/*.html linguist-generated=true" not in attributes
 
 
 def test_reference_json_files_are_valid() -> None:
@@ -208,6 +300,7 @@ def test_build_check_passes() -> None:
     assert result.returncode == 0, result.stdout + result.stderr
     assert "OK: registry contains 18 verified template(s)" in result.stdout
     assert "OK: agent onboarding and distribution metadata are present" in result.stdout
+    assert "OK: GitHub Linguist generated-output rules are present" in result.stdout
 
 
 def _run() -> int:

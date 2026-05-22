@@ -21,6 +21,9 @@ Verification:
 - python scripts/build.py --check
 
 Core references:
+- CHEATSHEET.md
+- references/brand-profile.md
+- references/brand.example.md
 - references/writing.md
 - references/design.md
 - references/production.md

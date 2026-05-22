@@ -9,6 +9,12 @@ Use Gyeol to produce professional Korean and English business documents from sou
 
 For installation, packaging, or cross-agent setup questions, read `docs/onboarding.md`.
 
+## Step 0 - Load Brand Profile
+
+Check `~/.config/gyeol/brand.md`. If it exists, read `references/brand-profile.md` before applying it.
+
+Key priority order: explicit prompt > document judgment > source material > brand profile frontmatter > brand profile notes > built-in defaults. The profile fills gaps silently. It never overrides the current request.
+
 ## Workflow
 
 1. Identify the output language: Korean, English, or both.
@@ -22,10 +28,11 @@ For installation, packaging, or cross-agent setup questions, read `docs/onboardi
    - `equity-report` or `equity-report-ko` for public-market research.
    - `changelog` or `changelog-ko` for release notes.
    - `landing-page` or `landing-page-ko` for screen-first product pages.
-3. Read `references/writing.md` for language-specific style rules before drafting.
-4. Fill placeholders in the chosen template.
-5. Run `python scripts/build.py --check`.
-6. If PDF rendering is required, install render dependencies and run the relevant render verification before delivery.
+3. Read `CHEATSHEET.md` when you need a compact template selection or verification reminder.
+4. Read `references/writing.md` for language-specific style rules before drafting.
+5. Fill placeholders in the chosen template.
+6. Run `python scripts/build.py --check`.
+7. If PDF rendering is required, install render dependencies and run the relevant render verification before delivery.
 
 ## Design Rules
 

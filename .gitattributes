@@ -1,0 +1,6 @@
+# Keep GitHub language stats focused on source files.
+# Demo HTML, QA screenshots, and release ZIPs are generated outputs.
+assets/demos/** linguist-generated=true
+docs/design-qa/screenshots/** linguist-generated=true
+dist/** linguist-generated=true
+
