@@ -1,76 +1,236 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="{{theme}}">
 <head>
   <meta charset="utf-8">
-  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{company_ko}} IR 원페이지</title>
   <style>
-    @page { size: A4; margin: 18mm; }
+    @page { size: A4; margin: 16mm; }
     :root {
-      --canvas: #ffffff;
-      --mineral: #f4f3ee;
+      --canvas: #fbfaf7;
+      --surface: #ffffff;
       --ink: #17171c;
-      --slate: #61616f;
-      --hairline: #dedee6;
-      --dark: #071829;
-      --blue: #1863dc;
-      --font: Pretendard, "Noto Sans KR", system-ui, sans-serif;
+      --muted: #656779;
+      --hairline: #dddfe8;
+      --band: #071829;
+      --accent: #1863dc;
+      --semiconductor: #0f766e;
+      --font: Pretendard, "Noto Sans KR", Inter, system-ui, sans-serif;
       --mono: "JetBrains Mono", ui-monospace, monospace;
     }
+    [data-theme="dark"] {
+      --canvas: #080d14;
+      --surface: #101824;
+      --ink: #f5f7fb;
+      --muted: #a8b0c2;
+      --hairline: #263244;
+      --band: #dfe8ff;
+      --accent: #7fb4ff;
+      --semiconductor: #6ee7c8;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--font); line-height: 1.55; word-break: keep-all; }
-    @media screen { body { padding: 18mm; } }
-    .page { min-height: 261mm; display: grid; gap: 18px; grid-template-rows: auto auto 1fr auto; }
-    header { border-bottom: 1px solid var(--hairline); padding-bottom: 16px; }
-    .kicker { color: var(--blue); font-family: var(--mono); font-size: 11px; margin-bottom: 12px; }
-    h1 { font-size: 36px; font-weight: 650; line-height: 1.16; margin: 0; }
-    .subtitle { color: var(--slate); font-size: 15px; max-width: 620px; }
-    .summary { background: var(--dark); border-radius: 8px; color: #ffffff; padding: 18px; }
-    .summary h2, .section h2 { font-size: 14px; margin: 0 0 10px; }
-    .grid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
-    .section { border: 1px solid var(--hairline); border-radius: 8px; padding: 16px; }
-    .metric-row { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
-    .metric { background: var(--mineral); border-radius: 6px; padding: 12px; }
-    .metric strong { display: block; font-size: 22px; }
-    footer { border-top: 1px solid var(--hairline); color: var(--slate); font-family: var(--mono); font-size: 11px; padding-top: 12px; }
+    html { background: var(--canvas); }
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.58;
+      word-break: keep-all;
+    }
+    @media screen { body { padding: 16mm; } }
+    .page {
+      min-height: 265mm;
+      display: grid;
+      gap: 16px;
+      grid-template-rows: auto auto auto 1fr auto auto;
+    }
+    header {
+      display: grid;
+      gap: 12px;
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 16px;
+    }
+    .notice {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+    }
+    h1 {
+      margin: 0;
+      color: var(--band);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.12;
+    }
+    .label {
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 6px 10px;
+      white-space: nowrap;
+    }
+    .metric-rail {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .metric-rail .metric {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      min-height: 74px;
+      padding: 13px;
+    }
+    .metric-rail strong {
+      display: block;
+      color: var(--semiconductor);
+      font-family: var(--mono);
+      font-size: 18px;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+    .metric-rail span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+    .thesis-block {
+      background: var(--band);
+      border-radius: 8px;
+      color: var(--canvas);
+      padding: 18px 20px;
+    }
+    .thesis-block h2,
+    .panel h2,
+    .risk-grid h2,
+    .decision-bar h2 {
+      font-size: 11px;
+      font-family: var(--mono);
+      letter-spacing: 0;
+      margin: 0 0 9px;
+    }
+    .thesis-block p {
+      font-size: 17px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .two-column {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .panel h2 { color: var(--accent); }
+    .panel p { margin: 0; }
+    .risk-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .risk-grid article {
+      border-left: 3px solid var(--semiconductor);
+      background: var(--surface);
+      border-radius: 8px;
+      box-shadow: inset 0 0 0 1px var(--hairline);
+      padding: 14px 15px;
+    }
+    .risk-grid h2 { color: var(--muted); }
+    .risk-grid p { margin: 0; }
+    .decision-bar {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .decision-bar h2 {
+      color: var(--accent);
+      margin: 0;
+      white-space: nowrap;
+    }
+    .decision-bar p { margin: 0; }
+    .source-note {
+      border-top: 1px solid var(--hairline);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      padding-top: 10px;
+    }
+    @media print {
+      body { font-size: 12px; }
+      .page { min-height: auto; }
+      .metric-rail, .two-column, .risk-grid { break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
   <main class="page">
     <header>
-      <div class="kicker">{{kicker}}</div>
-      <h1>{{title}}</h1>
-      <p class="subtitle">{{subtitle}}</p>
+      <div class="notice">{{sample_notice_ko}}</div>
+      <div class="masthead">
+        <h1>{{company_ko}}</h1>
+        <div class="label">IR 원페이지</div>
+      </div>
     </header>
 
-    <section class="summary">
-      <h2>결정</h2>
-      <p>{{decision}}</p>
+    <section class="metric-rail" aria-label="투자 지표">
+      <div class="metric"><strong>{{metric_1}}</strong><span>수요 신호</span></div>
+      <div class="metric"><strong>{{metric_2}}</strong><span>실행 근거</span></div>
+      <div class="metric"><strong>{{metric_3}}</strong><span>자본 집중도</span></div>
     </section>
 
-    <section class="grid">
-      <article class="section">
-        <h2>근거</h2>
-        <p>{{evidence}}</p>
+    <section class="thesis-block">
+      <h2>투자 논지</h2>
+      <p>{{thesis_ko}}</p>
+    </section>
+
+    <section class="two-column">
+      <article class="panel">
+        <h2>시장 진입점</h2>
+        <p>{{market_wedge_ko}}</p>
       </article>
-      <article class="section">
-        <h2>리스크</h2>
-        <p>{{risk}}</p>
-      </article>
-      <article class="section">
-        <h2>실행 계획</h2>
-        <p>{{plan}}</p>
-      </article>
-      <article class="section">
-        <h2>지표</h2>
-        <div class="metric-row">
-          <div class="metric"><strong>{{metric_1}}</strong>{{metric_1_label}}</div>
-          <div class="metric"><strong>{{metric_2}}</strong>{{metric_2_label}}</div>
-          <div class="metric"><strong>{{metric_3}}</strong>{{metric_3_label}}</div>
-        </div>
+      <article class="panel">
+        <h2>기술 해자</h2>
+        <p>{{technology_moat_ko}}</p>
       </article>
     </section>
 
-    <footer>{{source_note}}</footer>
+    <section class="risk-grid" aria-label="위험 요인">
+      <article>
+        <h2>위험 01</h2>
+        <p>{{risk_1_ko}}</p>
+      </article>
+      <article>
+        <h2>위험 02</h2>
+        <p>{{risk_2_ko}}</p>
+      </article>
+    </section>
+
+    <section class="decision-bar">
+      <h2>다음 의사결정</h2>
+      <p>{{next_decision_ko}}</p>
+    </section>
+
+    <footer class="source-note">투자자 검토용 샘플입니다. 외부 공유 전 운영 지표, 시장 주장, 기술 근거를 반드시 검증하십시오.</footer>
   </main>
 </body>
 </html>
