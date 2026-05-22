@@ -252,6 +252,70 @@ def test_github_linguist_ignores_generated_outputs_only() -> None:
     assert "assets/templates/*.html linguist-generated=true" not in attributes
 
 
+def test_premium_hero_lane_reference_and_demos_exist() -> None:
+    reference_path = ROOT / "references/hero-haneul-npu.json"
+    assert reference_path.exists(), "missing hero reference data"
+    data = json.loads(reference_path.read_text(encoding="utf-8"))
+
+    assert data["company"]["name"] == "Haneul NPU Systems"
+    assert data["company"]["fictional"] is True
+    assert "on-device NPU" in data["company"]["positioning"]
+    assert "low-power inference chiplet" in data["company"]["moat"]
+
+    required_demos = [
+        "assets/demos/hero-haneul-ir-ko.html",
+        "assets/demos/hero-haneul-investor-memo.html",
+        "assets/demos/hero-haneul-equity-report.html",
+        "assets/demos/hero-haneul-equity-report-ko.html",
+        "assets/demos/hero-haneul-strategy-deck.html",
+        "assets/demos/hero-haneul-landing-page.html",
+    ]
+    for relative in required_demos:
+        path = ROOT / relative
+        assert path.exists(), f"missing hero demo: {relative}"
+        html = path.read_text(encoding="utf-8")
+        assert "{{" not in html and "}}" not in html
+        assert "Haneul NPU Systems" in html or "하늘 NPU 시스템즈" in html
+        assert "fictional sample data" in html or "가상 샘플 데이터" in html
+
+
+def test_theme_policy_is_encoded_in_target_templates() -> None:
+    document_templates = [
+        "assets/templates/one-pager.html",
+        "assets/templates/one-pager-ko.html",
+        "assets/templates/long-doc.html",
+        "assets/templates/long-doc-ko.html",
+        "assets/templates/equity-report.html",
+        "assets/templates/equity-report-ko.html",
+        "assets/templates/slides.html",
+        "assets/templates/slides-ko.html",
+    ]
+    for relative in document_templates:
+        html = (ROOT / relative).read_text(encoding="utf-8")
+        assert 'data-theme="{{theme}}"' in html, f"{relative} must expose a static theme marker"
+        assert '[data-theme="dark"]' in html, f"{relative} must define dark theme tokens"
+        assert 'data-theme-toggle' not in html, f"{relative} must not rely on browser theme toggle"
+
+    for relative in ["assets/templates/landing-page.html", "assets/templates/landing-page-ko.html"]:
+        html = (ROOT / relative).read_text(encoding="utf-8")
+        assert 'data-theme="{{theme}}"' in html
+        assert 'data-theme-toggle' in html
+        assert "localStorage" in html
+
+
+def test_readme_leads_with_investment_strategy_proof_pack() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "Investment / Strategy Proof Pack" in readme
+    assert readme.index("Investment / Strategy Proof Pack") < readme.index("### 바로 설치")
+    for relative in [
+        "assets/demos/hero-haneul-ir-ko.html",
+        "assets/demos/hero-haneul-investor-memo.html",
+        "assets/demos/hero-haneul-equity-report.html",
+        "assets/demos/hero-haneul-strategy-deck.html",
+    ]:
+        assert relative in readme
+
+
 def test_reference_json_files_are_valid() -> None:
     for relative in [
         "references/tokens.json",

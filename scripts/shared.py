@@ -67,6 +67,7 @@ REQUIRED_PROJECT_FILES = (
     "references/writing.md",
     "references/production.md",
     "references/roadmap.md",
+    "references/hero-haneul-npu.json",
     "references/tokens.json",
     "references/checks_thresholds.json",
     "references/stabilizer_profiles.json",
