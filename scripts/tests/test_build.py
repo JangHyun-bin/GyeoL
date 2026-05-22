@@ -264,6 +264,7 @@ def test_premium_hero_lane_reference_and_demos_exist() -> None:
     assert "on-device NPU" in data["company"]["positioning"]
     assert "low-power inference chiplet" in data["company"]["moat"]
     assert len(demos.HERO_DEMOS) == len(shared.HERO_DEMOS)
+    assert [path for _, _, _, path in demos.HERO_DEMOS] == list(shared.HERO_DEMOS)
 
     combined_html = ""
     for relative in shared.HERO_DEMOS:

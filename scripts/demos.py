@@ -90,12 +90,12 @@ COMMON_VALUES = {
 }
 
 HERO_DEMOS = [
-    ("hero-haneul-ir-ko", "one-pager-ko", "ir_one_pager"),
-    ("hero-haneul-investor-memo", "long-doc", "investor_memo"),
-    ("hero-haneul-equity-report", "equity-report", "equity_report"),
-    ("hero-haneul-equity-report-ko", "equity-report-ko", "equity_report"),
-    ("hero-haneul-strategy-deck", "slides-ko", "strategy_deck"),
-    ("hero-haneul-landing-page", "landing-page", "landing_page"),
+    ("hero-haneul-ir-ko", "one-pager-ko", "ir_one_pager", shared.HERO_DEMOS[0]),
+    ("hero-haneul-investor-memo", "long-doc", "investor_memo", shared.HERO_DEMOS[1]),
+    ("hero-haneul-equity-report", "equity-report", "equity_report", shared.HERO_DEMOS[2]),
+    ("hero-haneul-equity-report-ko", "equity-report-ko", "equity_report", shared.HERO_DEMOS[3]),
+    ("hero-haneul-strategy-deck", "slides-ko", "strategy_deck", shared.HERO_DEMOS[4]),
+    ("hero-haneul-landing-page", "landing-page", "landing_page", shared.HERO_DEMOS[5]),
 ]
 
 SAMPLES = {
@@ -467,7 +467,7 @@ def fill_template(template_name: str, source: str, explicit_values: dict[str, st
     def replace(match: re.Match[str]) -> str:
         key = match.group(1)
         value = values.get(key, _fallback_value(key, template_name))
-        return html.escape(value, quote=False)
+        return html.escape(str(value), quote=True)
 
     return PLACEHOLDER_RE.sub(replace, source)
 
@@ -494,12 +494,11 @@ def generate_all() -> dict:
             }
         )
 
-    for output_stem, template_name, hero_kind in HERO_DEMOS:
+    for output_stem, template_name, hero_kind, output_relative in HERO_DEMOS:
         template = templates[template_name]
         source = shared.project_path(template.path).read_text(encoding="utf-8")
         output = fill_template(template.name, source, _hero_values(hero_kind))
-        output_name = f"{output_stem}.html"
-        output_path = demo_dir / output_name
+        output_path = shared.project_path(output_relative)
         output_path.write_text(output, encoding="utf-8", newline="\n")
         demos.append(
             {
@@ -508,7 +507,7 @@ def generate_all() -> dict:
                 "language": template.language,
                 "kind": template.kind,
                 "template": template.path,
-                "path": f"assets/demos/{output_name}",
+                "path": output_relative,
             }
         )
 
