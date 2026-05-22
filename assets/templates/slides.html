@@ -1,42 +1,198 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="{{theme}}">
 <head>
   <meta charset="utf-8">
-  <title>{{title}}</title>
+  <title>{{company}} Strategy Deck</title>
   <style>
     @page { size: 16in 9in; margin: 0; }
-    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --dark:#071829; --blue:#1863dc; --canvas:#ffffff; --font:Inter, system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    :root {
+      --canvas: #fbfaf7;
+      --surface: #ffffff;
+      --ink: #17171c;
+      --muted: #656779;
+      --hairline: #dddfe8;
+      --band: #071829;
+      --accent: #1863dc;
+      --accent-soft: #dfe8ff;
+      --font: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    [data-theme="dark"] {
+      --canvas: #080d14;
+      --surface: #101824;
+      --ink: #f5f7fb;
+      --muted: #a8b0c2;
+      --hairline: #263244;
+      --band: #dfe8ff;
+      --accent: #7fb4ff;
+      --accent-soft: #16233a;
+    }
     * { box-sizing: border-box; }
-    body { background: var(--canvas); color: var(--ink); font-family: var(--font); margin: 0; }
-    .slide { aspect-ratio: 16 / 9; border-bottom: 1px solid var(--hairline); display: grid; min-height: 720px; padding: 64px; page-break-after: always; }
+    html, body { background: var(--canvas); }
+    body {
+      color: var(--ink);
+      font-family: var(--font);
+      margin: 0;
+    }
+    .slide {
+      aspect-ratio: 16 / 9;
+      background: var(--canvas);
+      border-bottom: 1px solid var(--hairline);
+      display: grid;
+      min-height: 720px;
+      padding: 64px;
+      page-break-after: always;
+    }
     @media screen { .slide { min-height: 100vh; } }
-    .title { align-content: end; background: var(--dark); color: #ffffff; }
-    .kicker { color: var(--blue); font-family: var(--mono); font-size: 15px; margin-bottom: 20px; }
-    h1 { font-size: 68px; font-weight: 620; line-height: 1.02; margin: 0; max-width: 980px; }
-    h2 { font-size: 44px; font-weight: 600; line-height: 1.12; margin: 0 0 24px; }
-    p { color: var(--slate); font-size: 24px; max-width: 860px; }
-    .title p { color: rgba(255,255,255,0.78); }
-    .cols { display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr); }
-    .card { border: 1px solid var(--hairline); border-radius: 8px; padding: 24px; }
-    .card strong { display: block; font-size: 24px; margin-bottom: 12px; }
+    .title {
+      align-content: space-between;
+      background: var(--band);
+      color: var(--canvas);
+    }
+    .title .kicker,
+    .title .company,
+    .title p { color: color-mix(in srgb, var(--canvas) 78%, transparent); }
+    .topline {
+      align-items: center;
+      display: flex;
+      gap: 18px;
+      justify-content: space-between;
+    }
+    .kicker,
+    .notice {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .company {
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 7px 11px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    h1 {
+      color: inherit;
+      font-size: 68px;
+      font-weight: 620;
+      line-height: 1.02;
+      margin: 0;
+      max-width: 1020px;
+    }
+    h2 {
+      color: var(--band);
+      font-size: 44px;
+      font-weight: 640;
+      line-height: 1.08;
+      margin: 0 0 24px;
+      max-width: 940px;
+    }
+    p {
+      color: var(--muted);
+      font-size: 23px;
+      line-height: 1.42;
+      margin: 0;
+      max-width: 920px;
+    }
+    .title p {
+      font-size: 25px;
+      margin-top: 24px;
+    }
+    .grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 40px;
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      display: grid;
+      gap: 14px;
+      padding: 26px;
+    }
+    .panel strong {
+      color: var(--ink);
+      font-size: 26px;
+      font-weight: 640;
+      line-height: 1.16;
+    }
+    .panel p { font-size: 20px; }
+    .plan {
+      align-items: stretch;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1.1fr 0.9fr;
+      margin-top: 34px;
+    }
+    .statement {
+      background: var(--accent-soft);
+      border-radius: 8px;
+      color: var(--ink);
+      padding: 28px;
+    }
+    .statement p { color: var(--ink); }
+    .ask {
+      align-self: end;
+      border-top: 1px solid var(--hairline);
+      display: grid;
+      gap: 14px;
+      padding-top: 26px;
+    }
+    .ask strong {
+      color: var(--band);
+      font-size: 30px;
+      font-weight: 640;
+    }
   </style>
 </head>
 <body>
   <section class="slide title">
-    <div>
+    <div class="topline">
       <div class="kicker">{{deck_label}}</div>
+      <div class="company">{{company}}</div>
+    </div>
+    <div>
+      <div class="notice">{{sample_notice}}</div>
       <h1>{{title}}</h1>
       <p>{{subtitle}}</p>
     </div>
   </section>
   <section class="slide">
     <div>
-      <h2>{{section_title}}</h2>
-      <p>{{section_summary}}</p>
-      <div class="cols">
-        <div class="card"><strong>{{point_1}}</strong>{{point_1_detail}}</div>
-        <div class="card"><strong>{{point_2}}</strong>{{point_2_detail}}</div>
-        <div class="card"><strong>{{point_3}}</strong>{{point_3_detail}}</div>
+      <div class="notice">{{sample_notice}}</div>
+      <h2>Strategic Assertions</h2>
+      <div class="grid">
+        <div class="panel">
+          <strong>{{assertion_1}}</strong>
+          <p>{{evidence_1}}</p>
+        </div>
+        <div class="panel">
+          <strong>{{assertion_2}}</strong>
+          <p>{{evidence_2}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <div class="notice">{{company}}</div>
+      <h2>Operating Plan and Ask</h2>
+      <div class="plan">
+        <div class="statement"><p>{{roadmap}}</p></div>
+        <div class="panel">
+          <strong>Risk Register</strong>
+          <p>{{risk_register}}</p>
+        </div>
+      </div>
+      <div class="ask">
+        <strong>Investor Ask</strong>
+        <p>{{investor_ask}}</p>
       </div>
     </div>
   </section>
