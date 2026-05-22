@@ -43,6 +43,15 @@ SCREEN_PAGES = {
 
 PLANNED_TEMPLATES = ()
 
+HERO_DEMOS = (
+    "assets/demos/hero-haneul-ir-ko.html",
+    "assets/demos/hero-haneul-investor-memo.html",
+    "assets/demos/hero-haneul-equity-report.html",
+    "assets/demos/hero-haneul-equity-report-ko.html",
+    "assets/demos/hero-haneul-strategy-deck.html",
+    "assets/demos/hero-haneul-landing-page.html",
+)
+
 REQUIRED_PROJECT_FILES = (
     ".gitattributes",
     "README.md",

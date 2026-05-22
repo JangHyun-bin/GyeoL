@@ -262,15 +262,7 @@ def test_premium_hero_lane_reference_and_demos_exist() -> None:
     assert "on-device NPU" in data["company"]["positioning"]
     assert "low-power inference chiplet" in data["company"]["moat"]
 
-    required_demos = [
-        "assets/demos/hero-haneul-ir-ko.html",
-        "assets/demos/hero-haneul-investor-memo.html",
-        "assets/demos/hero-haneul-equity-report.html",
-        "assets/demos/hero-haneul-equity-report-ko.html",
-        "assets/demos/hero-haneul-strategy-deck.html",
-        "assets/demos/hero-haneul-landing-page.html",
-    ]
-    for relative in required_demos:
+    for relative in shared.HERO_DEMOS:
         path = ROOT / relative
         assert path.exists(), f"missing hero demo: {relative}"
         html = path.read_text(encoding="utf-8")

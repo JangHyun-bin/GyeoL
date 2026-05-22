@@ -184,7 +184,10 @@ def check_hero_lane() -> list[str]:
         return [f"references/hero-haneul-npu.json is invalid JSON: {exc}"]
     if data.get("company", {}).get("fictional") is not True:
         errors.append("hero company must be marked fictional")
-    for relative in data.get("hero_demos", []):
+    listed_demos = set(data.get("hero_demos", []))
+    for relative in shared.HERO_DEMOS:
+        if relative not in listed_demos:
+            errors.append(f"hero reference missing demo entry {relative}")
         demo_path = shared.project_path(relative)
         if not demo_path.exists():
             errors.append(f"missing hero demo {relative}")
