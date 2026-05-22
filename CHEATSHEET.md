@@ -40,6 +40,18 @@ python scripts/build.py --check
 | Release notes | `changelog` | `changelog-ko` |
 | Static product page | `landing-page` | `landing-page-ko` |
 
+## Premium Hero Lane
+
+Use `references/hero-haneul-npu.json` for the first investment/strategy proof pack. The company is fictional and must stay clearly marked as sample data.
+
+Default themes:
+
+- Korean IR one-pager: light
+- English investor memo: light
+- Equity-style report: light
+- Strategy deck: dark
+- Landing page: dark with toggle
+
 ## Workflow
 
 1. Identify language: Korean, English, or both.
@@ -89,4 +101,3 @@ PDF output is outside the fast structural boundary. Install WeasyPrint and PyPDF
 - Use restrained enterprise color from `references/tokens.json`.
 - Keep landing pages screen-first and documents print-friendly.
 - Keep Kami attribution visible in public docs and references.
-

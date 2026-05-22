@@ -42,6 +42,14 @@ Key priority order: explicit prompt > document judgment > source material > bran
 - Keep document templates denser and more printable than marketing pages.
 - Keep Kami attribution visible in public docs and reference files.
 
+## Theme Selection
+
+Use `light` for print, memo, report, send-as-PDF, and formal investment documents. Consider `dark` for premium, board, keynote, launch, executive preview, and strategy deck requests. Document templates should emit one fixed theme per artifact. Landing pages may include a browser toggle.
+
+## Hero Sample Context
+
+For investment/strategy demos or examples, use `references/hero-haneul-npu.json`. Keep Haneul NPU Systems marked as fictional sample data.
+
 ## Verification Boundary
 
 The registry in `scripts/shared.py` is the source of truth for verified templates. Do not claim a template exists unless it is registered and `python scripts/build.py --check` passes.

@@ -1,0 +1,35 @@
+{
+  "company": {
+    "name": "Haneul NPU Systems",
+    "korean_name": "하늘 NPU 시스템즈",
+    "fictional": true,
+    "sample_notice": "Fictional sample data for Gyeol demos. Not an investment recommendation.",
+    "korean_sample_notice": "Gyeol 데모를 위한 가상 샘플 데이터입니다. 투자 의견이 아닙니다.",
+    "positioning": "Korean fabless company building on-device NPU silicon for smartphones and laptops.",
+    "moat": "low-power inference chiplet and reusable NPU IP platform.",
+    "stage": "Private Series B/C-style company written with public-company research depth."
+  },
+  "themes": {
+    "ir_one_pager": "light",
+    "investor_memo": "light",
+    "equity_report": "light",
+    "strategy_deck": "dark",
+    "landing_page": "dark"
+  },
+  "metrics": {
+    "process_node": "4nm target",
+    "power_reduction": "42%",
+    "prototype_tops": "38 TOPS",
+    "design_wins": "3 pilot OEMs",
+    "runway": "24 months",
+    "gross_margin_target": "58-62%"
+  },
+  "hero_demos": [
+    "assets/demos/hero-haneul-ir-ko.html",
+    "assets/demos/hero-haneul-investor-memo.html",
+    "assets/demos/hero-haneul-equity-report.html",
+    "assets/demos/hero-haneul-equity-report-ko.html",
+    "assets/demos/hero-haneul-strategy-deck.html",
+    "assets/demos/hero-haneul-landing-page.html"
+  ]
+}

@@ -32,3 +32,11 @@ Use JetBrains Mono for code, command labels, and narrow technical metadata.
 - Deep green: `#003c33`
 - Action blue: `#1863dc`
 - Coral: `#ff7759`, limited use only
+
+## Light / Dark Theme Policy
+
+Document templates use a fixed `data-theme` value per artifact. They may expose `{{theme}}`, but they do not include a browser toggle. Landing pages may include a browser toggle because they are screen-first outputs.
+
+Light theme is the default for IR one-pagers, investor memos, reports, and PDF-oriented work. Dark theme is preferred for strategy decks, launch pages, board previews, and executive presentation surfaces.
+
+Dark mode is not an inversion. It uses a deep graphite/navy canvas, warm foreground text, restrained blue or semiconductor green accents, and visible hairlines.
