@@ -14,4 +14,4 @@ Gyeol is a Korean/English native document stack for agents. It includes a skill 
 
 ## Current Scope
 
-Verified Phase 1 templates are one-pager, long-doc, and slides in English and Korean. Other document types belong in `references/roadmap.md` until implemented.
+Verified templates are one-pager, long-doc, letter, portfolio, resume, slides, equity-report, changelog, and landing-page in English and Korean.

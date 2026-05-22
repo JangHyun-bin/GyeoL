@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{release_name}} Changelog</title>
+  <style>
+    @page { size:A4; margin:18mm; }
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --blue:#1863dc; --font:Inter, system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    body { color:var(--ink); font-family:var(--font); line-height:1.48; margin:0; }
+    header { border-bottom:1px solid var(--hairline); padding-bottom:18px; }
+    .version { color:var(--blue); font-family:var(--mono); font-size:12px; }
+    h1 { font-size:36px; line-height:1.1; margin:10px 0; }
+    section { border-bottom:1px solid var(--hairline); padding:18px 0; }
+    h2 { font-size:18px; margin:0 0 8px; }
+    ul { margin:0; padding-left:20px; }
+    li { margin-bottom:7px; }
+  </style>
+</head>
+<body>
+  <header><div class="version">{{version}} · {{date}}</div><h1>{{release_name}}</h1><p>{{summary}}</p></header>
+  <section><h2>Added</h2><ul><li>{{added_1}}</li><li>{{added_2}}</li></ul></section>
+  <section><h2>Changed</h2><ul><li>{{changed_1}}</li><li>{{changed_2}}</li></ul></section>
+  <section><h2>Fixed</h2><ul><li>{{fixed_1}}</li><li>{{fixed_2}}</li></ul></section>
+</body>
+</html>

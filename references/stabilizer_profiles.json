@@ -13,5 +13,34 @@
     "line_height_min": 1.1,
     "line_height_max": 1.35,
     "allow_scale": false
+  },
+  "letter": {
+    "line_height_min": 1.45,
+    "line_height_max": 1.7,
+    "allow_scale": true
+  },
+  "portfolio": {
+    "line_height_min": 1.4,
+    "line_height_max": 1.6,
+    "allow_scale": false
+  },
+  "resume": {
+    "line_height_min": 1.35,
+    "line_height_max": 1.55,
+    "allow_scale": true
+  },
+  "equity-report": {
+    "line_height_min": 1.35,
+    "line_height_max": 1.55,
+    "allow_scale": false
+  },
+  "changelog": {
+    "line_height_min": 1.35,
+    "line_height_max": 1.55,
+    "allow_scale": true
+  },
+  "landing-page": {
+    "screen_only": true,
+    "allow_scale": false
   }
 }

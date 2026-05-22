@@ -6,18 +6,24 @@ Gyeol is an open document stack for agents that need to produce Korean and Engli
 
 Gyeol is structurally informed by [Kami](https://github.com/tw93/Kami): the idea of a document skill with templates, references, and verification scripts. Gyeol is not a fork. Code and templates are rewritten around Korean/English native writing, a sans-first enterprise visual system, and a stronger public-site influence from the local Cohere design analysis.
 
-## Phase 1
+## Verified Templates
 
-Phase 1 ships a small verified core:
+Gyeol currently verifies the full 9-type Korean/English stack:
 
 - `one-pager` and `one-pager-ko`
 - `long-doc` and `long-doc-ko`
+- `letter` and `letter-ko`
+- `portfolio` and `portfolio-ko`
+- `resume` and `resume-ko`
 - `slides` and `slides-ko`
+- `equity-report` and `equity-report-ko`
+- `changelog` and `changelog-ko`
+- `landing-page` and `landing-page-ko`
 - English site at `/`
 - Korean site at `/ko.html`
 - fast structural checks through `python scripts/build.py --check`
 
-The later Kami-scale set is planned in `references/roadmap.md`: letter, portfolio, resume, equity report, changelog, and landing page.
+`references/roadmap.md` now tracks what is verified and what needs deeper render-quality work.
 
 ## Use
 

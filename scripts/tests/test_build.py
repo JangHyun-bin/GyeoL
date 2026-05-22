@@ -12,27 +12,30 @@ sys.path.insert(0, str(ROOT))
 from scripts import shared
 
 
-def test_phase_one_registry_has_only_verified_templates() -> None:
+def test_full_registry_has_all_verified_templates() -> None:
     names = [template.name for template in shared.HTML_TEMPLATES]
     assert names == [
         "one-pager",
         "one-pager-ko",
         "long-doc",
         "long-doc-ko",
+        "letter",
+        "letter-ko",
+        "portfolio",
+        "portfolio-ko",
+        "resume",
+        "resume-ko",
         "slides",
         "slides-ko",
+        "equity-report",
+        "equity-report-ko",
+        "changelog",
+        "changelog-ko",
+        "landing-page",
+        "landing-page-ko",
     ]
 
-    planned = set(shared.PLANNED_TEMPLATES)
-    assert {
-        "letter",
-        "portfolio",
-        "resume",
-        "equity-report",
-        "changelog",
-        "landing-page",
-    }.issubset(planned)
-    assert planned.isdisjoint(names)
+    assert shared.PLANNED_TEMPLATES == ()
 
 
 def test_registered_template_files_exist_and_match_language() -> None:
@@ -107,7 +110,7 @@ def test_build_check_passes() -> None:
         capture_output=True,
     )
     assert result.returncode == 0, result.stdout + result.stderr
-    assert "OK: registry contains 6 verified template(s)" in result.stdout
+    assert "OK: registry contains 18 verified template(s)" in result.stdout
 
 
 def _run() -> int:

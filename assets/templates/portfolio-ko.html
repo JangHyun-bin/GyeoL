@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>{{name}} 포트폴리오</title>
+  <style>
+    @page { size:A4; margin:18mm; }
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --dark:#071829; --blue:#1863dc; --font:Pretendard, "Noto Sans KR", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    body { color:var(--ink); font-family:var(--font); line-height:1.6; margin:0; word-break:keep-all; }
+    header { background:var(--dark); border-radius:8px; color:white; padding:28px; }
+    .eyebrow { color:var(--blue); font-family:var(--mono); font-size:12px; }
+    h1 { font-size:38px; line-height:1.14; margin:10px 0; }
+    .grid { display:grid; gap:16px; grid-template-columns:1fr 1fr; margin-top:22px; }
+    .project { border:1px solid var(--hairline); border-radius:8px; padding:18px; page-break-inside:avoid; }
+    .project h2 { font-size:21px; margin:0 0 8px; }
+    .tag { background:var(--mineral); border-radius:4px; display:inline-block; font-family:var(--mono); font-size:11px; margin-top:12px; padding:5px 7px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">{{role}}</div>
+    <h1>{{name}}</h1>
+    <p>{{positioning}}</p>
+  </header>
+  <main class="grid">
+    <article class="project"><h2>{{project_1}}</h2><p>{{project_1_summary}}</p><span class="tag">{{project_1_tag}}</span></article>
+    <article class="project"><h2>{{project_2}}</h2><p>{{project_2_summary}}</p><span class="tag">{{project_2_tag}}</span></article>
+    <article class="project"><h2>{{project_3}}</h2><p>{{project_3_summary}}</p><span class="tag">{{project_3_tag}}</span></article>
+    <article class="project"><h2>{{project_4}}</h2><p>{{project_4_summary}}</p><span class="tag">{{project_4_tag}}</span></article>
+  </main>
+</body>
+</html>

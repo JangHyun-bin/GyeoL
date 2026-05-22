@@ -10,5 +10,23 @@
   "slides": {
     "max_slides": 10,
     "max_words_per_slide": 80
+  },
+  "letter": {
+    "max_pages": 1
+  },
+  "portfolio": {
+    "max_pages": 8
+  },
+  "resume": {
+    "max_pages": 2
+  },
+  "equity_report": {
+    "max_pages": 4
+  },
+  "changelog": {
+    "max_pages": 2
+  },
+  "landing_page": {
+    "screen_only": true
   }
 }

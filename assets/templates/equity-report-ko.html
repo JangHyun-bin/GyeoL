@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>{{ticker}} 리서치 리포트</title>
+  <style>
+    @page { size:A4; margin:18mm; }
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --dark:#071829; --blue:#1863dc; --font:Pretendard, "Noto Sans KR", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    body { color:var(--ink); font-family:var(--font); line-height:1.58; margin:0; word-break:keep-all; }
+    header { background:var(--dark); border-radius:8px; color:white; padding:24px; }
+    .ticker { color:var(--blue); font-family:var(--mono); font-size:12px; }
+    h1 { font-size:34px; line-height:1.16; margin:8px 0; }
+    .rating { background:white; border-radius:6px; color:var(--ink); display:inline-block; font-weight:700; margin-top:10px; padding:8px 12px; }
+    section { border-bottom:1px solid var(--hairline); padding:20px 0; }
+    h2 { font-size:21px; margin:0 0 8px; }
+    .grid { display:grid; gap:14px; grid-template-columns:repeat(3,1fr); }
+    .metric { background:var(--mineral); border-radius:6px; padding:12px; }
+    .metric strong { display:block; font-size:22px; }
+  </style>
+</head>
+<body>
+  <header><div class="ticker">{{ticker}} · {{date}}</div><h1>{{company}}</h1><p>{{thesis}}</p><div class="rating">{{rating}} · {{target_price}}</div></header>
+  <section><h2>요약 지표</h2><div class="grid"><div class="metric"><strong>{{revenue}}</strong>매출</div><div class="metric"><strong>{{margin}}</strong>마진</div><div class="metric"><strong>{{growth}}</strong>성장률</div></div></section>
+  <section><h2>투자 관점</h2><p>{{investment_thesis}}</p></section>
+  <section><h2>리스크</h2><p>{{risks}}</p></section>
+  <section><h2>확인할 항목</h2><p>{{watch_items}}</p></section>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ticker}} Equity Report</title>
+  <style>
+    @page { size:A4; margin:18mm; }
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --dark:#071829; --blue:#1863dc; --font:Inter, system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    body { color:var(--ink); font-family:var(--font); line-height:1.48; margin:0; }
+    header { background:var(--dark); border-radius:8px; color:white; padding:24px; }
+    .ticker { color:var(--blue); font-family:var(--mono); font-size:12px; }
+    h1 { font-size:38px; line-height:1.08; margin:8px 0; }
+    .rating { background:white; border-radius:6px; color:var(--ink); display:inline-block; font-weight:700; margin-top:10px; padding:8px 12px; }
+    section { border-bottom:1px solid var(--hairline); padding:20px 0; }
+    h2 { font-size:22px; margin:0 0 8px; }
+    .grid { display:grid; gap:14px; grid-template-columns:repeat(3,1fr); }
+    .metric { background:var(--mineral); border-radius:6px; padding:12px; }
+    .metric strong { display:block; font-size:22px; }
+  </style>
+</head>
+<body>
+  <header><div class="ticker">{{ticker}} · {{date}}</div><h1>{{company}}</h1><p>{{thesis}}</p><div class="rating">{{rating}} · {{target_price}}</div></header>
+  <section><h2>Snapshot</h2><div class="grid"><div class="metric"><strong>{{revenue}}</strong>Revenue</div><div class="metric"><strong>{{margin}}</strong>Margin</div><div class="metric"><strong>{{growth}}</strong>Growth</div></div></section>
+  <section><h2>Investment Thesis</h2><p>{{investment_thesis}}</p></section>
+  <section><h2>Risks</h2><p>{{risks}}</p></section>
+  <section><h2>Watch Items</h2><p>{{watch_items}}</p></section>
+</body>
+</html>

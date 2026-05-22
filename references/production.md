@@ -20,4 +20,4 @@ PDF rendering needs extra dependencies. Before claiming PDF output is final, ins
 - Templates stay self-contained.
 - Registered templates must contain `lang`.
 - Registered templates must expose `{{placeholder}}` fields.
-- Planned templates stay out of the registry until implemented.
+- The registry contains only templates that have real files and pass structural checks.

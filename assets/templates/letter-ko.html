@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>{{subject}}</title>
+  <style>
+    @page { size: A4; margin: 22mm 20mm; }
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --blue:#1863dc; --font:Pretendard, "Noto Sans KR", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    body { color:var(--ink); font-family:var(--font); line-height:1.68; margin:0; word-break:keep-all; }
+    header { border-bottom:1px solid var(--hairline); display:flex; justify-content:space-between; padding-bottom:18px; }
+    .brand { color:var(--blue); font-family:var(--mono); font-size:12px; }
+    .meta { color:var(--slate); font-size:13px; text-align:right; }
+    h1 { font-size:28px; font-weight:650; line-height:1.24; margin:34px 0 24px; }
+    p { margin:0 0 14px; }
+    .signature { margin-top:34px; }
+    footer { border-top:1px solid var(--hairline); color:var(--slate); font-family:var(--mono); font-size:11px; margin-top:48px; padding-top:12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">{{sender_org}}</div>
+    <div class="meta">{{date}}<br>{{recipient}}</div>
+  </header>
+  <main>
+    <h1>{{subject}}</h1>
+    <p>{{opening}}</p>
+    <p>{{body}}</p>
+    <p>{{request}}</p>
+    <p>{{closing}}</p>
+    <div class="signature">{{sender_name}}<br>{{sender_title}}</div>
+  </main>
+  <footer>{{reference_note}}</footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Roadmap
 
-## Phase 1
+## Verified Stack
 
 Verified:
 
@@ -8,18 +8,23 @@ Verified:
 - one-pager-ko
 - long-doc
 - long-doc-ko
+- letter
+- letter-ko
+- portfolio
+- portfolio-ko
+- resume
+- resume-ko
 - slides
 - slides-ko
-
-## Phase 2
-
-Planned but not yet verified:
-
-- letter
-- portfolio
-- resume
 - equity-report
+- equity-report-ko
 - changelog
+- changelog-ko
 - landing-page
+- landing-page-ko
 
-Do not add Phase 2 templates to `scripts/shared.py` until each has real files, language-native content, checks, and visual review.
+## Next Quality Pass
+
+- Add real demo data for all templates.
+- Add visual screenshot/PDF render checks once WeasyPrint and browser QA are configured.
+- Add packaging/release automation after the first GitHub release shape is stable.

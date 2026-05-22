@@ -20,8 +20,20 @@ HTML_TEMPLATES = (
     Template("one-pager-ko", "assets/templates/one-pager-ko.html", "ko", "document", 1),
     Template("long-doc", "assets/templates/long-doc.html", "en", "document", 8),
     Template("long-doc-ko", "assets/templates/long-doc-ko.html", "ko", "document", 8),
+    Template("letter", "assets/templates/letter.html", "en", "document", 1),
+    Template("letter-ko", "assets/templates/letter-ko.html", "ko", "document", 1),
+    Template("portfolio", "assets/templates/portfolio.html", "en", "document", 8),
+    Template("portfolio-ko", "assets/templates/portfolio-ko.html", "ko", "document", 8),
+    Template("resume", "assets/templates/resume.html", "en", "document", 2),
+    Template("resume-ko", "assets/templates/resume-ko.html", "ko", "document", 2),
     Template("slides", "assets/templates/slides.html", "en", "slides", 10),
     Template("slides-ko", "assets/templates/slides-ko.html", "ko", "slides", 10),
+    Template("equity-report", "assets/templates/equity-report.html", "en", "document", 4),
+    Template("equity-report-ko", "assets/templates/equity-report-ko.html", "ko", "document", 4),
+    Template("changelog", "assets/templates/changelog.html", "en", "document", 2),
+    Template("changelog-ko", "assets/templates/changelog-ko.html", "ko", "document", 2),
+    Template("landing-page", "assets/templates/landing-page.html", "en", "screen", 0),
+    Template("landing-page-ko", "assets/templates/landing-page-ko.html", "ko", "screen", 0),
 )
 
 SCREEN_PAGES = {
@@ -29,14 +41,7 @@ SCREEN_PAGES = {
     "ko": "ko.html",
 }
 
-PLANNED_TEMPLATES = (
-    "letter",
-    "portfolio",
-    "resume",
-    "equity-report",
-    "changelog",
-    "landing-page",
-)
+PLANNED_TEMPLATES = ()
 
 REQUIRED_PROJECT_FILES = (
     "README.md",

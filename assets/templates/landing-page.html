@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{product_name}}</title>
+  <style>
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --dark:#071829; --blue:#1863dc; --canvas:#fff; --font:Inter, system-ui, sans-serif; }
+    * { box-sizing:border-box; }
+    body { color:var(--ink); font-family:var(--font); margin:0; }
+    header { align-items:center; border-bottom:1px solid var(--hairline); display:flex; justify-content:space-between; padding:22px 32px; }
+    .hero { display:grid; gap:48px; grid-template-columns:1fr 1fr; min-height:76vh; padding:84px 32px; }
+    h1 { font-size:72px; font-weight:560; line-height:1.02; margin:0; }
+    p { color:var(--slate); font-size:20px; line-height:1.45; }
+    .panel { background:var(--dark); border-radius:8px; color:white; padding:28px; }
+    .button { background:var(--ink); border-radius:999px; color:white; display:inline-block; margin-top:18px; padding:13px 22px; text-decoration:none; }
+    .features { display:grid; gap:18px; grid-template-columns:repeat(3,1fr); padding:0 32px 72px; }
+    .feature { border:1px solid var(--hairline); border-radius:8px; padding:22px; }
+  </style>
+</head>
+<body>
+  <header><strong>{{product_name}}</strong><a href="{{cta_url}}">{{cta_label}}</a></header>
+  <main>
+    <section class="hero"><div><h1>{{headline}}</h1><p>{{subhead}}</p><a class="button" href="{{cta_url}}">{{cta_label}}</a></div><div class="panel">{{proof_panel}}</div></section>
+    <section class="features"><div class="feature">{{feature_1}}</div><div class="feature">{{feature_2}}</div><div class="feature">{{feature_3}}</div></section>
+  </main>
+</body>
+</html>

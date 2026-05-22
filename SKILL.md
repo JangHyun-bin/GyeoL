@@ -10,10 +10,16 @@ Use Gyeol to produce professional Korean and English business documents from sou
 ## Workflow
 
 1. Identify the output language: Korean, English, or both.
-2. Pick a verified Phase 1 template:
+2. Pick a verified template:
    - `one-pager` or `one-pager-ko` for concise briefs.
    - `long-doc` or `long-doc-ko` for reports and proposals.
+   - `letter` or `letter-ko` for formal correspondence.
+   - `portfolio` or `portfolio-ko` for project collections.
+   - `resume` or `resume-ko` for career profiles.
    - `slides` or `slides-ko` for presentation decks.
+   - `equity-report` or `equity-report-ko` for public-market research.
+   - `changelog` or `changelog-ko` for release notes.
+   - `landing-page` or `landing-page-ko` for screen-first product pages.
 3. Read `references/writing.md` for language-specific style rules before drafting.
 4. Fill placeholders in the chosen template.
 5. Run `python scripts/build.py --check`.
@@ -27,6 +33,6 @@ Use Gyeol to produce professional Korean and English business documents from sou
 - Keep document templates denser and more printable than marketing pages.
 - Keep Kami attribution visible in public docs and reference files.
 
-## Planned Templates
+## Verification Boundary
 
-Letter, portfolio, resume, equity report, changelog, and landing page are planned for Phase 2. Do not claim they are verified until they are added to `scripts/shared.py` and pass checks.
+The registry in `scripts/shared.py` is the source of truth for verified templates. Do not claim a template exists unless it is registered and `python scripts/build.py --check` passes.

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>{{name}} 이력서</title>
+  <style>
+    @page { size:A4; margin:16mm; }
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --blue:#1863dc; --font:Pretendard, "Noto Sans KR", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    body { color:var(--ink); font-family:var(--font); font-size:13px; line-height:1.52; margin:0; word-break:keep-all; }
+    header { border-bottom:1px solid var(--hairline); padding-bottom:14px; }
+    h1 { font-size:30px; margin:0 0 6px; }
+    .headline { color:var(--slate); font-size:15px; }
+    section { border-bottom:1px solid var(--hairline); padding:14px 0; }
+    h2 { color:var(--blue); font-family:var(--mono); font-size:11px; margin:0 0 8px; }
+    .item { margin-bottom:10px; }
+    .item strong { display:block; font-size:15px; }
+    ul { margin:6px 0 0 18px; padding:0; }
+  </style>
+</head>
+<body>
+  <header><h1>{{name}}</h1><div class="headline">{{headline}}</div><div>{{contact}}</div></header>
+  <section><h2>소개</h2><p>{{profile}}</p></section>
+  <section><h2>경력</h2><div class="item"><strong>{{role_1}}</strong>{{company_1}} · {{period_1}}<ul><li>{{impact_1}}</li><li>{{impact_2}}</li></ul></div><div class="item"><strong>{{role_2}}</strong>{{company_2}} · {{period_2}}<ul><li>{{impact_3}}</li></ul></div></section>
+  <section><h2>프로젝트</h2><p>{{projects}}</p></section>
+  <section><h2>역량</h2><p>{{skills}}</p></section>
+</body>
+</html>
