@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{title}}</title>
+  <title>Building a native document layer for agents</title>
   <style>
     @page { size: A4; margin: 20mm 18mm; }
     :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --blue:#1863dc; --font:Inter, system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
@@ -24,42 +24,42 @@
 <body>
   <article>
     <header class="cover">
-      <div class="kicker">{{document_type}}</div>
-      <h1>{{title}}</h1>
-      <p class="lede">{{summary}}</p>
-      <div class="meta"><span>{{author}}</span><span>{{date}}</span><span>{{status}}</span></div>
+      <div class="kicker">Strategy Report</div>
+      <h1>Building a native document layer for agents</h1>
+      <p class="lede">A practical report on why agent-generated documents need language-native templates, not only prompt instructions.</p>
+      <div class="meta"><span>Gyeol Team</span><span>2026-05-22</span><span>Draft for review</span></div>
     </header>
 
     <section>
       <h2>Executive Read</h2>
-      <p>{{executive_read}}</p>
-      <div class="callout">{{core_claim}}</div>
+      <p>The highest leverage move is to make document quality a repository concern: templates, references, demos, and checks live together.</p>
+      <div class="callout">Native writing rules matter as much as layout when Korean and English outputs share one system.</div>
     </section>
 
     <section>
       <h2>Context</h2>
-      <p>{{context}}</p>
+      <p>Agent tools can draft quickly, but without stable constraints they drift across tone, hierarchy, and output shape.</p>
     </section>
 
     <section class="twocol">
       <div>
         <h2>Evidence</h2>
-        <p>{{evidence}}</p>
+        <p>Kami demonstrates that a skill plus template registry can make document generation repeatable. Gyeol adapts the pattern for Korean and English.</p>
       </div>
       <div>
         <h2>Implications</h2>
-        <p>{{implications}}</p>
+        <p>The repo should track demos and QA notes so visual quality is visible, not implied.</p>
       </div>
     </section>
 
     <section>
       <h2>Recommendation</h2>
-      <p>{{recommendation}}</p>
+      <p>Treat each template as a product surface with sample data, browser review, and a render path.</p>
     </section>
 
     <section>
       <h2>Next Steps</h2>
-      <p>{{next_steps}}</p>
+      <p>Generate filled demos, inspect them in browser, then add PDF rendering once dependencies are stable.</p>
     </section>
   </article>
 </body>

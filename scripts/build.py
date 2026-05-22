@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts import shared
+from scripts import demos
 
 
 def _error(message: str) -> str:
@@ -124,7 +125,14 @@ def run_check() -> int:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Gyeol build and verification entry point")
     parser.add_argument("--check", action="store_true", help="run fast structural checks")
+    parser.add_argument("--demos", action="store_true", help="generate filled demo HTML outputs")
     args = parser.parse_args(argv)
+
+    if args.demos:
+        manifest = demos.generate_all()
+        print(_ok(f"generated {len(manifest['demos'])} demo HTML file(s)"))
+        print(_ok("wrote assets/demos/demo-manifest.json"))
+        return 0
 
     if args.check:
         return run_check()

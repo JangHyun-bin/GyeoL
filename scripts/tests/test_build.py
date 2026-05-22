@@ -102,6 +102,32 @@ def test_reference_json_files_are_valid() -> None:
         assert data
 
 
+def test_demo_generation_creates_filled_outputs() -> None:
+    from scripts import demos
+
+    manifest = demos.generate_all()
+    assert len(manifest["demos"]) == len(shared.HTML_TEMPLATES)
+
+    manifest_path = ROOT / "assets/demos/demo-manifest.json"
+    assert manifest_path.exists()
+
+    for item in manifest["demos"]:
+        path = ROOT / item["path"]
+        assert path.exists(), f"missing demo output: {item['path']}"
+        html = path.read_text(encoding="utf-8")
+        assert "{{" not in html and "}}" not in html
+        assert f'lang="{item["language"]}"' in html
+
+    result = subprocess.run(
+        [sys.executable, "scripts/build.py", "--demos"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "OK: generated 18 demo HTML file(s)" in result.stdout
+
+
 def test_build_check_passes() -> None:
     result = subprocess.run(
         [sys.executable, "scripts/build.py", "--check"],
@@ -115,9 +141,8 @@ def test_build_check_passes() -> None:
 
 def _run() -> int:
     failures = 0
-    for name, value in sorted(globals().items()):
-        if not name.startswith("test_") or not callable(value):
-            continue
+    tests = [(name, value) for name, value in sorted(globals().items()) if name.startswith("test_") and callable(value)]
+    for name, value in tests:
         try:
             value()
             print(f"OK: {name}")
@@ -125,7 +150,7 @@ def _run() -> int:
             failures += 1
             print(f"ERROR: {name}")
             traceback.print_exc()
-    print(f"Passed: {6 - failures} | Failed: {failures}")
+    print(f"Passed: {len(tests) - failures} | Failed: {failures}")
     return 1 if failures else 0
 
 

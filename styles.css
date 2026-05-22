@@ -27,6 +27,7 @@ html {
 body {
   margin: 0;
   background: var(--canvas);
+  overflow-x: hidden;
 }
 
 a {
@@ -74,6 +75,7 @@ a {
 
 .hero-copy {
   align-self: center;
+  min-width: 0;
   max-width: 880px;
 }
 
@@ -95,6 +97,7 @@ h1 {
   color: var(--slate);
   font-size: 20px;
   max-width: 660px;
+  overflow-wrap: anywhere;
 }
 
 .actions {
@@ -130,9 +133,12 @@ h1 {
   background: var(--dark);
   border-radius: 8px;
   color: var(--canvas);
+  max-width: 100%;
   min-height: 520px;
+  min-width: 0;
   overflow: hidden;
   padding: 26px;
+  width: 100%;
 }
 
 .preview-top {
@@ -142,6 +148,9 @@ h1 {
   font-family: var(--font-mono);
   font-size: 12px;
   justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  overflow: hidden;
   padding-bottom: 18px;
 }
 
@@ -149,12 +158,16 @@ h1 {
   display: grid;
   gap: 14px;
   margin-top: 24px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .mini-doc {
   background: var(--canvas);
   border-radius: 6px;
   color: var(--ink);
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding: 20px;
 }
 
@@ -174,11 +187,13 @@ h1 {
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(3, 1fr);
+  min-width: 0;
 }
 
 .mini-cell {
   background: var(--mineral);
   border-radius: 4px;
+  min-width: 0;
   min-height: 42px;
 }
 
@@ -267,6 +282,7 @@ h1 {
 
   .preview {
     min-height: 420px;
+    padding: 18px;
   }
 
   .grid {
@@ -287,6 +303,24 @@ h1 {
   .band {
     padding-left: 18px;
     padding-right: 18px;
+  }
+
+  .hero {
+    display: block;
+  }
+
+  .preview {
+    margin-top: 48px;
+    margin-right: 18px;
+    max-width: 100%;
+    width: auto;
+  }
+
+  .preview-top span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   h1 {

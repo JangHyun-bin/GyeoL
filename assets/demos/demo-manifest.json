@@ -1,0 +1,131 @@
+{
+  "generated_by": "scripts/demos.py",
+  "demos": [
+    {
+      "name": "one-pager",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/one-pager.html",
+      "path": "assets/demos/demo-one-pager.html"
+    },
+    {
+      "name": "one-pager-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/one-pager-ko.html",
+      "path": "assets/demos/demo-one-pager-ko.html"
+    },
+    {
+      "name": "long-doc",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/long-doc.html",
+      "path": "assets/demos/demo-long-doc.html"
+    },
+    {
+      "name": "long-doc-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/long-doc-ko.html",
+      "path": "assets/demos/demo-long-doc-ko.html"
+    },
+    {
+      "name": "letter",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/letter.html",
+      "path": "assets/demos/demo-letter.html"
+    },
+    {
+      "name": "letter-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/letter-ko.html",
+      "path": "assets/demos/demo-letter-ko.html"
+    },
+    {
+      "name": "portfolio",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/portfolio.html",
+      "path": "assets/demos/demo-portfolio.html"
+    },
+    {
+      "name": "portfolio-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/portfolio-ko.html",
+      "path": "assets/demos/demo-portfolio-ko.html"
+    },
+    {
+      "name": "resume",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/resume.html",
+      "path": "assets/demos/demo-resume.html"
+    },
+    {
+      "name": "resume-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/resume-ko.html",
+      "path": "assets/demos/demo-resume-ko.html"
+    },
+    {
+      "name": "slides",
+      "language": "en",
+      "kind": "slides",
+      "template": "assets/templates/slides.html",
+      "path": "assets/demos/demo-slides.html"
+    },
+    {
+      "name": "slides-ko",
+      "language": "ko",
+      "kind": "slides",
+      "template": "assets/templates/slides-ko.html",
+      "path": "assets/demos/demo-slides-ko.html"
+    },
+    {
+      "name": "equity-report",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/equity-report.html",
+      "path": "assets/demos/demo-equity-report.html"
+    },
+    {
+      "name": "equity-report-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/equity-report-ko.html",
+      "path": "assets/demos/demo-equity-report-ko.html"
+    },
+    {
+      "name": "changelog",
+      "language": "en",
+      "kind": "document",
+      "template": "assets/templates/changelog.html",
+      "path": "assets/demos/demo-changelog.html"
+    },
+    {
+      "name": "changelog-ko",
+      "language": "ko",
+      "kind": "document",
+      "template": "assets/templates/changelog-ko.html",
+      "path": "assets/demos/demo-changelog-ko.html"
+    },
+    {
+      "name": "landing-page",
+      "language": "en",
+      "kind": "screen",
+      "template": "assets/templates/landing-page.html",
+      "path": "assets/demos/demo-landing-page.html"
+    },
+    {
+      "name": "landing-page-ko",
+      "language": "ko",
+      "kind": "screen",
+      "template": "assets/templates/landing-page-ko.html",
+      "path": "assets/demos/demo-landing-page-ko.html"
+    }
+  ]
+}
