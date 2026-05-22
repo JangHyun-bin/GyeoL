@@ -11,7 +11,7 @@
 
 Gyeol은 Codex, Claude Code, Claude Desktop, 그리고 로컬 스킬 폴더를 읽는 에이전트가 한국어와 영어 비즈니스 문서를 바로 만들 수 있게 해주는 문서 스킬, 템플릿, 검증 저장소입니다.
 
-한국어는 영어 번역문이 아니라 처음부터 한국어 문서로 씁니다. 영어도 별도 네이티브 출력으로 다룹니다. Gyeol은 [Kami](https://github.com/tw93/Kami)의 저장소 구조, 템플릿 중심 사고, 검증 루프에서 영향을 받았지만 포크는 아닙니다.
+한국어는 영어 번역문이 아니라 처음부터 한국어 문서로 씁니다. 영어도 별도 네이티브 출력으로 다룹니다. Gyeol은 [Kami](https://github.com/tw93/Kami)의 저장소 구조, 템플릿 중심 사고, 검증 루프에서 영향 받았습니다.
 
 ### 결과 보기
 
@@ -124,7 +124,7 @@ Gyeol is a document skill, template, and verification repository for agents that
 
 It is not a SaaS product. It is designed for Codex, Claude Code, Claude Desktop, and other tools that can read a skill from `~/.agents/` or a local checkout. Korean is treated as a native document language, not as an English translation. English outputs are native siblings.
 
-Gyeol is structurally informed by [Kami](https://github.com/tw93/Kami): the repository shape, template-first workflow, and verification loop. It is not a fork. The writing rules, visual system, and Korean/English template stack are rewritten for Gyeol.
+Gyeol is structurally informed by [Kami](https://github.com/tw93/Kami): the repository shape, template-first workflow, and verification loop. The writing rules, visual system, and Korean/English template stack are rewritten for Gyeol.
 
 ### See It
 
