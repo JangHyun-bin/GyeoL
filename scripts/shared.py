@@ -1,0 +1,68 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+@dataclass(frozen=True)
+class Template:
+    name: str
+    path: str
+    language: str
+    kind: str
+    max_pages: int
+
+
+HTML_TEMPLATES = (
+    Template("one-pager", "assets/templates/one-pager.html", "en", "document", 1),
+    Template("one-pager-ko", "assets/templates/one-pager-ko.html", "ko", "document", 1),
+    Template("long-doc", "assets/templates/long-doc.html", "en", "document", 8),
+    Template("long-doc-ko", "assets/templates/long-doc-ko.html", "ko", "document", 8),
+    Template("slides", "assets/templates/slides.html", "en", "slides", 10),
+    Template("slides-ko", "assets/templates/slides-ko.html", "ko", "slides", 10),
+)
+
+SCREEN_PAGES = {
+    "en": "index.html",
+    "ko": "ko.html",
+}
+
+PLANNED_TEMPLATES = (
+    "letter",
+    "portfolio",
+    "resume",
+    "equity-report",
+    "changelog",
+    "landing-page",
+)
+
+REQUIRED_PROJECT_FILES = (
+    "README.md",
+    "SKILL.md",
+    "AGENTS.md",
+    "CREDITS.md",
+    "NOTICE",
+    "LICENSE",
+    "styles.css",
+    "references/kami.md",
+    "references/cohere.md",
+    "references/design.md",
+    "references/writing.md",
+    "references/production.md",
+    "references/roadmap.md",
+    "references/tokens.json",
+    "references/checks_thresholds.json",
+    "references/stabilizer_profiles.json",
+)
+
+REFERENCE_JSON_FILES = (
+    "references/tokens.json",
+    "references/checks_thresholds.json",
+    "references/stabilizer_profiles.json",
+)
+
+
+def project_path(relative: str) -> Path:
+    return ROOT / relative

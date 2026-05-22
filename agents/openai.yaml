@@ -1,0 +1,8 @@
+interface:
+  display_name: "Gyeol"
+  short_description: "Native Korean/English document stack"
+  brand_color: "#071829"
+  default_prompt: "Use $gyeol to create a native Korean or English business document."
+
+policy:
+  allow_implicit_invocation: true

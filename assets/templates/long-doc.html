@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <style>
+    @page { size: A4; margin: 20mm 18mm; }
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --blue:#1863dc; --font:Inter, system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    * { box-sizing: border-box; }
+    body { color: var(--ink); font-family: var(--font); line-height: 1.55; margin: 0; }
+    .cover { border-bottom: 1px solid var(--hairline); padding-bottom: 24px; }
+    .kicker { color: var(--blue); font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+    h1 { font-size: 46px; font-weight: 620; line-height: 1.08; margin: 14px 0; }
+    .lede { color: var(--slate); font-size: 18px; max-width: 680px; }
+    .meta { display: flex; gap: 20px; font-family: var(--mono); font-size: 11px; margin-top: 22px; }
+    section { border-bottom: 1px solid var(--hairline); padding: 24px 0; }
+    h2 { font-size: 24px; margin: 0 0 10px; }
+    p { margin: 0 0 12px; }
+    .callout { background: var(--mineral); border-radius: 8px; margin: 18px 0; padding: 16px; }
+    .twocol { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+  </style>
+</head>
+<body>
+  <article>
+    <header class="cover">
+      <div class="kicker">{{document_type}}</div>
+      <h1>{{title}}</h1>
+      <p class="lede">{{summary}}</p>
+      <div class="meta"><span>{{author}}</span><span>{{date}}</span><span>{{status}}</span></div>
+    </header>
+
+    <section>
+      <h2>Executive Read</h2>
+      <p>{{executive_read}}</p>
+      <div class="callout">{{core_claim}}</div>
+    </section>
+
+    <section>
+      <h2>Context</h2>
+      <p>{{context}}</p>
+    </section>
+
+    <section class="twocol">
+      <div>
+        <h2>Evidence</h2>
+        <p>{{evidence}}</p>
+      </div>
+      <div>
+        <h2>Implications</h2>
+        <p>{{implications}}</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Recommendation</h2>
+      <p>{{recommendation}}</p>
+    </section>
+
+    <section>
+      <h2>Next Steps</h2>
+      <p>{{next_steps}}</p>
+    </section>
+  </article>
+</body>
+</html>

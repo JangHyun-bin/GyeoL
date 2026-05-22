@@ -1,0 +1,17 @@
+{
+  "one-pager": {
+    "line_height_min": 1.35,
+    "line_height_max": 1.55,
+    "allow_scale": true
+  },
+  "long-doc": {
+    "line_height_min": 1.45,
+    "line_height_max": 1.65,
+    "allow_scale": false
+  },
+  "slides": {
+    "line_height_min": 1.1,
+    "line_height_max": 1.35,
+    "allow_scale": false
+  }
+}

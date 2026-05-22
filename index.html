@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gyeol: Native Korean/English Document Stack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Gyeol</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#templates">Templates</a>
+      <a href="#verify">Verify</a>
+      <a href="ko.html">한국어</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">OPEN DOCUMENT STACK FOR AGENTS</p>
+        <h1>Gyeol</h1>
+        <p class="lead">Give your agent a native Korean/English document system. Business documents that read native in Korean and English.</p>
+        <div class="actions">
+          <a class="button primary" href="#verify">Run checks</a>
+          <a class="button secondary" href="references/kami.md">Kami reference</a>
+        </div>
+      </div>
+
+      <aside class="preview" aria-label="Gyeol document preview">
+        <div class="preview-top">
+          <span>gyeol / phase-1</span>
+          <span>ko + en</span>
+        </div>
+        <div class="doc-stack">
+          <div class="mini-doc">
+            <strong>Strategy One-Pager</strong>
+            <span>Market signal, operating thesis, decision path.</span>
+            <div class="mini-rule"></div>
+            <div class="mini-grid">
+              <div class="mini-cell"></div>
+              <div class="mini-cell"></div>
+              <div class="mini-cell"></div>
+            </div>
+          </div>
+          <div class="mini-doc">
+            <strong>한국어 제안서</strong>
+            <span>한국어 문장 호흡과 영어 문서 구조를 각각 네이티브로 다룹니다.</span>
+          </div>
+          <div class="mini-doc">
+            <strong>Slides</strong>
+            <span>Dense enough for decisions, quiet enough for repeated use.</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="band">
+      <div class="band-inner">
+        <h2>Built from a small verified core.</h2>
+        <p>Gyeol starts with one-pagers, long documents, and slides in Korean and English. Later document types stay planned until they are real, registered, and checked.</p>
+      </div>
+    </section>
+
+    <section class="section" id="templates">
+      <h2>Phase 1 templates</h2>
+      <div class="grid">
+        <article class="tile">
+          <h3>One-Pager</h3>
+          <p>Executive summary, evidence, decision, and next move on one page.</p>
+        </article>
+        <article class="tile">
+          <h3>Long Doc</h3>
+          <p>Reports and proposals with predictable section rhythm and evidence flow.</p>
+        </article>
+        <article class="tile">
+          <h3>Slides</h3>
+          <p>Presentation pages with strong hierarchy and compact technical detail.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="verify">
+      <h2>Verify before trusting output</h2>
+      <pre class="code">python scripts/tests/test_build.py
+python scripts/build.py --check</pre>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Gyeol credits Kami as a structural reference and rewrites the stack for Korean/English native documents.
+  </footer>
+</body>
+</html>

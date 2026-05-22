@@ -1,0 +1,14 @@
+{
+  "one_pager": {
+    "max_pages": 1,
+    "max_sections": 6
+  },
+  "long_doc": {
+    "max_pages": 8,
+    "min_sections": 5
+  },
+  "slides": {
+    "max_slides": 10,
+    "max_words_per_slide": 80
+  }
+}

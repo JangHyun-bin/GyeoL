@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <style>
+    @page { size: A4; margin: 18mm; }
+    :root {
+      --canvas: #ffffff;
+      --mineral: #f4f3ee;
+      --ink: #17171c;
+      --slate: #61616f;
+      --hairline: #dedee6;
+      --dark: #071829;
+      --blue: #1863dc;
+      --font: Pretendard, "Noto Sans KR", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--font); line-height: 1.55; word-break: keep-all; }
+    .page { min-height: 261mm; display: grid; gap: 18px; grid-template-rows: auto auto 1fr auto; }
+    header { border-bottom: 1px solid var(--hairline); padding-bottom: 16px; }
+    .kicker { color: var(--blue); font-family: var(--mono); font-size: 11px; margin-bottom: 12px; }
+    h1 { font-size: 36px; font-weight: 650; line-height: 1.16; margin: 0; }
+    .subtitle { color: var(--slate); font-size: 15px; max-width: 620px; }
+    .summary { background: var(--dark); border-radius: 8px; color: #ffffff; padding: 18px; }
+    .summary h2, .section h2 { font-size: 14px; margin: 0 0 10px; }
+    .grid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+    .section { border: 1px solid var(--hairline); border-radius: 8px; padding: 16px; }
+    .metric-row { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
+    .metric { background: var(--mineral); border-radius: 6px; padding: 12px; }
+    .metric strong { display: block; font-size: 22px; }
+    footer { border-top: 1px solid var(--hairline); color: var(--slate); font-family: var(--mono); font-size: 11px; padding-top: 12px; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="kicker">{{kicker}}</div>
+      <h1>{{title}}</h1>
+      <p class="subtitle">{{subtitle}}</p>
+    </header>
+
+    <section class="summary">
+      <h2>결정</h2>
+      <p>{{decision}}</p>
+    </section>
+
+    <section class="grid">
+      <article class="section">
+        <h2>근거</h2>
+        <p>{{evidence}}</p>
+      </article>
+      <article class="section">
+        <h2>리스크</h2>
+        <p>{{risk}}</p>
+      </article>
+      <article class="section">
+        <h2>실행 계획</h2>
+        <p>{{plan}}</p>
+      </article>
+      <article class="section">
+        <h2>지표</h2>
+        <div class="metric-row">
+          <div class="metric"><strong>{{metric_1}}</strong>{{metric_1_label}}</div>
+          <div class="metric"><strong>{{metric_2}}</strong>{{metric_2_label}}</div>
+          <div class="metric"><strong>{{metric_3}}</strong>{{metric_3_label}}</div>
+        </div>
+      </article>
+    </section>
+
+    <footer>{{source_note}}</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <style>
+    @page { size: 16in 9in; margin: 0; }
+    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --dark:#071829; --blue:#1863dc; --canvas:#ffffff; --font:Inter, system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    * { box-sizing: border-box; }
+    body { background: var(--canvas); color: var(--ink); font-family: var(--font); margin: 0; }
+    .slide { aspect-ratio: 16 / 9; border-bottom: 1px solid var(--hairline); display: grid; min-height: 720px; padding: 64px; page-break-after: always; }
+    .title { align-content: end; background: var(--dark); color: #ffffff; }
+    .kicker { color: var(--blue); font-family: var(--mono); font-size: 15px; margin-bottom: 20px; }
+    h1 { font-size: 68px; font-weight: 620; line-height: 1.02; margin: 0; max-width: 980px; }
+    h2 { font-size: 44px; font-weight: 600; line-height: 1.12; margin: 0 0 24px; }
+    p { color: var(--slate); font-size: 24px; max-width: 860px; }
+    .title p { color: rgba(255,255,255,0.78); }
+    .cols { display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr); }
+    .card { border: 1px solid var(--hairline); border-radius: 8px; padding: 24px; }
+    .card strong { display: block; font-size: 24px; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <section class="slide title">
+    <div>
+      <div class="kicker">{{deck_label}}</div>
+      <h1>{{title}}</h1>
+      <p>{{subtitle}}</p>
+    </div>
+  </section>
+  <section class="slide">
+    <div>
+      <h2>{{section_title}}</h2>
+      <p>{{section_summary}}</p>
+      <div class="cols">
+        <div class="card"><strong>{{point_1}}</strong>{{point_1_detail}}</div>
+        <div class="card"><strong>{{point_2}}</strong>{{point_2_detail}}</div>
+        <div class="card"><strong>{{point_3}}</strong>{{point_3_detail}}</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
