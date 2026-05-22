@@ -431,6 +431,8 @@ def _hero_values(kind: str) -> dict[str, str]:
         "risk_competition_ko": "대형 SoC 벤더가 NPU를 번들로 제공하며 독립 칩렛 경제성을 압박할 수 있습니다.",
         "deck_label": "Premium Strategy Deck",
         "deck_label_ko": "프리미엄 전략 발표자료",
+        "title": "On-device AI silicon strategy",
+        "subtitle": "A fictional Haneul NPU Systems strategy deck for investor and executive diligence.",
         "assertion_1": "The on-device NPU wedge is strongest where privacy, latency, and battery life all matter.",
         "assertion_1_ko": "on-device NPU 진입점은 개인정보, 지연시간, 배터리 수명이 모두 중요한 영역에서 가장 강합니다.",
         "evidence_1": f"The sample case uses {metrics['power_reduction']} lower power and {metrics['prototype_tops']} prototype throughput as diligence anchors.",
@@ -451,7 +453,7 @@ def _hero_values(kind: str) -> dict[str, str]:
         "feature_2": "Reusable NPU IP supports smartphones, laptops, and edge devices.",
         "feature_3": "Pilot evidence is framed for investor-grade diligence.",
         "cta_label": "Review sample memo",
-        "cta_url": "#investor-memo",
+        "cta_url": "hero-haneul-investor-memo.html",
     }
 
 

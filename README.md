@@ -34,7 +34,7 @@ Gyeol은 Codex, Claude Code, Claude Desktop, 그리고 로컬 스킬 폴더를 �
 |---|---|
 | [![Slides](docs/design-qa/screenshots/demo-slides.png)](assets/demos/demo-slides.html) | [![Landing page](docs/design-qa/screenshots/demo-landing-page.png)](assets/demos/demo-landing-page.html) |
 
-전체 샘플은 `assets/demos/demo-*.html`에 있고, 브라우저/렌더 기준 QA 기록은 `docs/design-qa/2026-05-22-render-qa.md`에 있습니다.
+전체 샘플은 `assets/demos/demo-*.html`와 `assets/demos/hero-*.html`에 있고, 브라우저/렌더 기준 QA 기록은 `docs/design-qa/2026-05-22-render-qa.md`에 있습니다.
 
 ### 바로 설치
 
@@ -147,7 +147,7 @@ Gyeol is structurally informed by [Kami](https://github.com/tw93/Kami): the repo
 |---|---|
 | [![Slides](docs/design-qa/screenshots/demo-slides.png)](assets/demos/demo-slides.html) | [![Landing page](docs/design-qa/screenshots/demo-landing-page.png)](assets/demos/demo-landing-page.html) |
 
-All sample outputs live in `assets/demos/demo-*.html`. Browser and render QA notes live in `docs/design-qa/2026-05-22-render-qa.md`.
+Sample outputs live in `assets/demos/demo-*.html` and `assets/demos/hero-*.html`. Browser and render QA notes live in `docs/design-qa/2026-05-22-render-qa.md`.
 
 ### Investment / Strategy Proof Pack
 
