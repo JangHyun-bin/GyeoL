@@ -102,6 +102,59 @@ def check_credit_language() -> list[str]:
     return errors
 
 
+def check_agent_distribution() -> list[str]:
+    errors: list[str] = []
+    readme_path = shared.project_path("README.md")
+    onboarding_path = shared.project_path("docs/onboarding.md")
+    if not readme_path.exists() or not onboarding_path.exists():
+        return errors
+
+    readme = readme_path.read_text(encoding="utf-8")
+    onboarding = onboarding_path.read_text(encoding="utf-8")
+    if "## 한국어" not in readme or "## English" not in readme:
+        errors.append("README.md must contain Korean and English sections")
+    elif readme.index("## 한국어") > readme.index("## English"):
+        errors.append("README.md must put Korean before English")
+
+    required_snippets = [
+        "npx skills add JangHyun-bin/GyeoL -a '*' -g -y",
+        "npx skills add JangHyun-bin/GyeoL -a claude-code -g -y",
+        "git clone https://github.com/JangHyun-bin/GyeoL.git",
+        "python scripts/package_skill.py",
+        "python scripts/tests/test_build.py",
+        "python scripts/build.py --check",
+        "docs/onboarding.md",
+    ]
+    for snippet in required_snippets:
+        if snippet not in readme:
+            errors.append(f"README.md missing onboarding snippet: {snippet}")
+        if snippet not in onboarding:
+            errors.append(f"docs/onboarding.md missing onboarding snippet: {snippet}")
+
+    openai_path = shared.project_path("agents/openai.yaml")
+    if openai_path.exists() and "allow_implicit_invocation: true" not in openai_path.read_text(encoding="utf-8"):
+        errors.append("agents/openai.yaml must allow implicit invocation")
+
+    marketplace_path = shared.project_path(".claude-plugin/marketplace.json")
+    if marketplace_path.exists():
+        try:
+            marketplace = json.loads(marketplace_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            errors.append(f".claude-plugin/marketplace.json is invalid JSON: {exc}")
+        else:
+            plugins = marketplace.get("plugins", [])
+            if not plugins or plugins[0].get("source") != "./" or plugins[0].get("skills") != ["./"]:
+                errors.append(".claude-plugin/marketplace.json must expose the root skill")
+
+    llms_path = shared.project_path("llms.txt")
+    if llms_path.exists():
+        llms = llms_path.read_text(encoding="utf-8")
+        if "Gyeol" not in llms or "SKILL.md" not in llms:
+            errors.append("llms.txt must describe Gyeol and point to SKILL.md")
+
+    return errors
+
+
 def run_check() -> int:
     errors: list[str] = []
     errors.extend(check_required_files())
@@ -109,6 +162,7 @@ def run_check() -> int:
     errors.extend(check_pages())
     errors.extend(check_reference_json())
     errors.extend(check_credit_language())
+    errors.extend(check_agent_distribution())
 
     if errors:
         for message in errors:
@@ -119,6 +173,7 @@ def run_check() -> int:
     print(_ok(f"public pages registered for {', '.join(sorted(shared.SCREEN_PAGES))}"))
     print(_ok(f"{len(shared.REFERENCE_JSON_FILES)} JSON reference file(s) are valid"))
     print(_ok("Kami credit and Gyeol identity references are present"))
+    print(_ok("agent onboarding and distribution metadata are present"))
     return 0
 
 

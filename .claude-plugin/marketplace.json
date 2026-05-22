@@ -1,0 +1,19 @@
+{
+  "name": "gyeol",
+  "description": "Native Korean/English business document skill for agents.",
+  "owner": {
+    "name": "JangHyun-bin",
+    "url": "https://github.com/JangHyun-bin"
+  },
+  "plugins": [
+    {
+      "name": "gyeol",
+      "description": "Create native Korean and English one-pagers, long documents, letters, portfolios, resumes, slides, equity reports, changelogs, and landing pages.",
+      "category": "documents",
+      "source": "./",
+      "homepage": "https://github.com/JangHyun-bin/GyeoL",
+      "skills": ["./"],
+      "strict": false
+    }
+  ]
+}

@@ -19,6 +19,8 @@ Thumbs.db
 .kami-http-*.log
 .gyeol-http-*.log
 dist/
+!dist/
+dist/*
 build/
 out/
 tmp/
@@ -26,3 +28,4 @@ tmp/
 *.pptx
 *.zip
 !assets/demos/*.pdf
+!dist/gyeol.zip

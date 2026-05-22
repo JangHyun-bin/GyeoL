@@ -4,6 +4,7 @@ import json
 import subprocess
 import sys
 import traceback
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -90,6 +91,75 @@ def test_required_credit_and_reference_files_exist() -> None:
         assert "Gyeol" in content
 
 
+def test_agent_onboarding_docs_cover_install_paths() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    onboarding_path = ROOT / "docs/onboarding.md"
+    assert onboarding_path.exists(), "missing docs/onboarding.md"
+    onboarding = onboarding_path.read_text(encoding="utf-8")
+
+    assert readme.index("## 한국어") < readme.index("## English")
+    required_snippets = [
+        "npx skills add JangHyun-bin/GyeoL -a '*' -g -y",
+        "npx skills add JangHyun-bin/GyeoL -a claude-code -g -y",
+        "git clone https://github.com/JangHyun-bin/GyeoL.git",
+        "python scripts/package_skill.py",
+        "python scripts/tests/test_build.py",
+        "python scripts/build.py --check",
+        "docs/onboarding.md",
+    ]
+    for snippet in required_snippets:
+        assert snippet in readme, f"README.md missing onboarding snippet: {snippet}"
+        assert snippet in onboarding, f"docs/onboarding.md missing onboarding snippet: {snippet}"
+
+    assert "Codex" in readme and "Claude Code" in readme and "Claude Desktop" in readme
+    assert "Codex" in onboarding and "Claude Code" in onboarding and "Claude Desktop" in onboarding
+
+
+def test_agent_distribution_metadata_and_package_are_ready() -> None:
+    required = [
+        "agents/openai.yaml",
+        ".claude-plugin/marketplace.json",
+        ".claude/launch.json",
+        "scripts/package_skill.py",
+        "llms.txt",
+    ]
+    for relative in required:
+        assert (ROOT / relative).exists(), f"missing agent distribution file: {relative}"
+
+    openai_yaml = (ROOT / "agents/openai.yaml").read_text(encoding="utf-8")
+    marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
+    llms = (ROOT / "llms.txt").read_text(encoding="utf-8")
+
+    assert "allow_implicit_invocation: true" in openai_yaml
+    assert marketplace["plugins"][0]["skills"] == ["./"]
+    assert marketplace["plugins"][0]["source"] == "./"
+    assert "Gyeol" in llms and "SKILL.md" in llms
+
+    result = subprocess.run(
+        [sys.executable, "scripts/package_skill.py", "--out", "dist/gyeol.zip"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "OK: wrote dist/gyeol.zip" in result.stdout
+
+    archive_path = ROOT / "dist/gyeol.zip"
+    assert archive_path.exists()
+    with zipfile.ZipFile(archive_path) as archive:
+        names = set(archive.namelist())
+    for relative in [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/templates/one-pager.html",
+        "assets/templates/one-pager-ko.html",
+        "references/writing.md",
+        "scripts/build.py",
+    ]:
+        assert relative in names, f"skill ZIP missing {relative}"
+    assert not any(name.startswith(".git/") or "__pycache__/" in name for name in names)
+
+
 def test_reference_json_files_are_valid() -> None:
     for relative in [
         "references/tokens.json",
@@ -137,6 +207,7 @@ def test_build_check_passes() -> None:
     )
     assert result.returncode == 0, result.stdout + result.stderr
     assert "OK: registry contains 18 verified template(s)" in result.stdout
+    assert "OK: agent onboarding and distribution metadata are present" in result.stdout
 
 
 def _run() -> int:

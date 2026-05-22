@@ -1,0 +1,33 @@
+# Gyeol
+
+Gyeol is a native Korean/English document skill for agents. It creates business deliverables from verified HTML templates and reference writing/design rules.
+
+Primary entry point:
+- SKILL.md
+
+Agent metadata:
+- agents/openai.yaml
+- .claude-plugin/marketplace.json
+
+Install:
+- Generic agents: npx skills add JangHyun-bin/GyeoL -a '*' -g -y
+- Claude Code: npx skills add JangHyun-bin/GyeoL -a claude-code -g -y
+- Local checkout: git clone https://github.com/JangHyun-bin/GyeoL.git
+- Claude Desktop: upload dist/gyeol.zip
+
+Verification:
+- python scripts/package_skill.py
+- python scripts/tests/test_build.py
+- python scripts/build.py --check
+
+Core references:
+- references/writing.md
+- references/design.md
+- references/production.md
+- references/roadmap.md
+
+Templates:
+- assets/templates/
+
+Onboarding:
+- docs/onboarding.md

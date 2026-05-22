@@ -7,6 +7,8 @@ description: Create native Korean and English business documents using the Gyeol
 
 Use Gyeol to produce professional Korean and English business documents from source material.
 
+For installation, packaging, or cross-agent setup questions, read `docs/onboarding.md`.
+
 ## Workflow
 
 1. Identify the output language: Korean, English, or both.
