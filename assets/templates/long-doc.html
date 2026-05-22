@@ -1,66 +1,164 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="{{theme}}">
 <head>
   <meta charset="utf-8">
-  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{company}} Investor Memo</title>
   <style>
-    @page { size: A4; margin: 20mm 18mm; }
-    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --blue:#1863dc; --font:Inter, system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+    @page { size: A4; margin: 18mm; }
+    :root {
+      --canvas: #fbfaf7;
+      --surface: #ffffff;
+      --ink: #17171c;
+      --muted: #656779;
+      --hairline: #dddfe8;
+      --band: #071829;
+      --accent: #1863dc;
+      --semiconductor: #0f766e;
+      --font: Pretendard, "Noto Sans KR", Inter, system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    [data-theme="dark"] {
+      --canvas: #080d14;
+      --surface: #101824;
+      --ink: #f5f7fb;
+      --muted: #a8b0c2;
+      --hairline: #263244;
+      --band: #dfe8ff;
+      --accent: #7fb4ff;
+      --semiconductor: #6ee7c8;
+    }
     * { box-sizing: border-box; }
-    body { color: var(--ink); font-family: var(--font); line-height: 1.55; margin: 0; }
-    @media screen { body { padding: 20mm 18mm; } }
-    .cover { border-bottom: 1px solid var(--hairline); padding-bottom: 24px; }
-    .kicker { color: var(--blue); font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
-    h1 { font-size: 46px; font-weight: 620; line-height: 1.08; margin: 14px 0; }
-    .lede { color: var(--slate); font-size: 18px; max-width: 680px; }
-    .meta { display: flex; gap: 20px; font-family: var(--mono); font-size: 11px; margin-top: 22px; }
-    section { border-bottom: 1px solid var(--hairline); padding: 24px 0; }
-    h2 { font-size: 24px; margin: 0 0 10px; }
-    p { margin: 0 0 12px; }
-    .callout { background: var(--mineral); border-radius: 8px; margin: 18px 0; padding: 16px; }
-    .twocol { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+    html, body { background: var(--canvas); }
+    body {
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.56;
+      margin: 0;
+    }
+    @media screen { body { padding: 18mm; } }
+    .page { display: grid; gap: 18px; }
+    header {
+      border-bottom: 1px solid var(--hairline);
+      display: grid;
+      gap: 14px;
+      padding-bottom: 20px;
+    }
+    .notice {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+    .masthead {
+      align-items: end;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr auto;
+    }
+    h1 {
+      color: var(--band);
+      font-size: 38px;
+      font-weight: 680;
+      line-height: 1.06;
+      margin: 0;
+    }
+    .company {
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 7px 11px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .summary {
+      background: var(--band);
+      border-radius: 8px;
+      color: var(--canvas);
+      padding: 18px 20px;
+    }
+    .summary h2,
+    section h2 {
+      font-size: 15px;
+      letter-spacing: 0;
+      line-height: 1.2;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+    .summary p,
+    section p { margin: 0; }
+    .memo-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      min-height: 92px;
+      padding: 16px;
+    }
+    section h2 { color: var(--semiconductor); }
+    .full { grid-column: 1 / -1; }
+    .investment-view {
+      border-left: 4px solid var(--accent);
+    }
+    @media print {
+      html, body { background: transparent; }
+      body { font-size: 12px; }
+      section, .summary { break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
-  <article>
-    <header class="cover">
-      <div class="kicker">{{document_type}}</div>
-      <h1>{{title}}</h1>
-      <p class="lede">{{summary}}</p>
-      <div class="meta"><span>{{author}}</span><span>{{date}}</span><span>{{status}}</span></div>
+  <article class="page">
+    <header>
+      <div class="notice">{{sample_notice}}</div>
+      <div class="masthead">
+        <h1>{{memo_title}}</h1>
+        <div class="company">{{company}}</div>
+      </div>
     </header>
 
-    <section>
-      <h2>Executive Read</h2>
-      <p>{{executive_read}}</p>
-      <div class="callout">{{core_claim}}</div>
+    <section class="summary">
+      <h2>Executive Summary</h2>
+      <p>{{executive_summary}}</p>
     </section>
 
-    <section>
-      <h2>Context</h2>
-      <p>{{context}}</p>
-    </section>
-
-    <section class="twocol">
-      <div>
-        <h2>Evidence</h2>
-        <p>{{evidence}}</p>
-      </div>
-      <div>
-        <h2>Implications</h2>
-        <p>{{implications}}</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Recommendation</h2>
-      <p>{{recommendation}}</p>
-    </section>
-
-    <section>
-      <h2>Next Steps</h2>
-      <p>{{next_steps}}</p>
-    </section>
+    <div class="memo-grid">
+      <section>
+        <h2>Why Now</h2>
+        <p>{{why_now}}</p>
+      </section>
+      <section>
+        <h2>Product Surface</h2>
+        <p>{{product_surface}}</p>
+      </section>
+      <section>
+        <h2>Market Wedge</h2>
+        <p>{{market_wedge}}</p>
+      </section>
+      <section>
+        <h2>Business Model</h2>
+        <p>{{business_model}}</p>
+      </section>
+      <section>
+        <h2>Technology Moat</h2>
+        <p>{{technology_moat}}</p>
+      </section>
+      <section>
+        <h2>Risk Register</h2>
+        <p>{{risk_register}}</p>
+      </section>
+      <section class="full investment-view">
+        <h2>Investment View</h2>
+        <p>{{investment_view}}</p>
+      </section>
+    </div>
   </article>
 </body>
 </html>

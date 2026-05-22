@@ -1,29 +1,196 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="{{theme}}">
 <head>
   <meta charset="utf-8">
-  <title>{{ticker}} 리서치 리포트</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{company_ko}} 비상장 기업 리서치</title>
   <style>
-    @page { size:A4; margin:18mm; }
-    :root { --ink:#17171c; --slate:#61616f; --hairline:#dedee6; --mineral:#f4f3ee; --dark:#071829; --blue:#1863dc; --font:Pretendard, "Noto Sans KR", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
-    body { color:var(--ink); font-family:var(--font); line-height:1.58; margin:0; word-break:keep-all; }
-    @media screen { body { padding:18mm; } }
-    header { background:var(--dark); border-radius:8px; color:white; padding:24px; }
-    .ticker { color:var(--blue); font-family:var(--mono); font-size:12px; }
-    h1 { font-size:34px; line-height:1.16; margin:8px 0; }
-    .rating { background:white; border-radius:6px; color:var(--ink); display:inline-block; font-weight:700; margin-top:10px; padding:8px 12px; }
-    section { border-bottom:1px solid var(--hairline); padding:20px 0; }
-    h2 { font-size:21px; margin:0 0 8px; }
-    .grid { display:grid; gap:14px; grid-template-columns:repeat(3,1fr); }
-    .metric { background:var(--mineral); border-radius:6px; padding:12px; }
-    .metric strong { display:block; font-size:22px; }
+    @page { size: A4; margin: 16mm; }
+    :root {
+      --canvas: #fbfaf7;
+      --surface: #ffffff;
+      --ink: #17171c;
+      --muted: #656779;
+      --hairline: #dddfe8;
+      --band: #071829;
+      --accent: #1863dc;
+      --semiconductor: #0f766e;
+      --font: Pretendard, "Noto Sans KR", Inter, system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    [data-theme="dark"] {
+      --canvas: #080d14;
+      --surface: #101824;
+      --ink: #f5f7fb;
+      --muted: #a8b0c2;
+      --hairline: #263244;
+      --band: #dfe8ff;
+      --accent: #7fb4ff;
+      --semiconductor: #6ee7c8;
+    }
+    * { box-sizing: border-box; }
+    html, body { background: var(--canvas); }
+    body {
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 12.5px;
+      line-height: 1.6;
+      margin: 0;
+      word-break: keep-all;
+    }
+    @media screen { body { padding: 16mm; } }
+    .page { display: grid; gap: 16px; }
+    header {
+      background: var(--band);
+      border-radius: 8px;
+      color: var(--canvas);
+      display: grid;
+      gap: 12px;
+      padding: 22px;
+    }
+    .notice {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 680;
+      line-height: 1.14;
+      margin: 0;
+    }
+    .rating {
+      background: var(--surface);
+      border-radius: 6px;
+      color: var(--ink);
+      display: inline-block;
+      font-weight: 700;
+      padding: 8px 11px;
+      width: max-content;
+    }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 15px;
+    }
+    h2 {
+      color: var(--semiconductor);
+      font-size: 15px;
+      margin: 0 0 10px;
+    }
+    p { margin: 0; }
+    .case-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .case-grid article {
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+    }
+    .case-grid h3,
+    .roadmap-strip h3 {
+      font-size: 13px;
+      margin: 0 0 6px;
+    }
+    .kpi-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .kpi-table th,
+    .kpi-table td {
+      border-bottom: 1px solid var(--hairline);
+      padding: 9px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .kpi-table th {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+    .risk-matrix {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .risk-matrix article {
+      border: 1px solid var(--hairline);
+      border-radius: 6px;
+      padding: 11px;
+    }
+    .roadmap-strip {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .roadmap-strip article {
+      background: var(--canvas);
+      border-radius: 6px;
+      padding: 11px;
+    }
+    .source-note {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+    @media print {
+      html, body { background: transparent; }
+      section, header { break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
-  <header><div class="ticker">{{ticker}} · {{date}}</div><h1>{{company}}</h1><p>{{thesis}}</p><div class="rating">{{rating}} · {{target_price}}</div></header>
-  <section><h2>요약 지표</h2><div class="grid"><div class="metric"><strong>{{revenue}}</strong>매출</div><div class="metric"><strong>{{margin}}</strong>마진</div><div class="metric"><strong>{{growth}}</strong>성장률</div></div></section>
-  <section><h2>투자 관점</h2><p>{{investment_thesis}}</p></section>
-  <section><h2>리스크</h2><p>{{risks}}</p></section>
-  <section><h2>확인할 항목</h2><p>{{watch_items}}</p></section>
+  <article class="page">
+    <header>
+      <div class="notice">{{sample_notice_ko}}</div>
+      <h1>{{company_ko}}</h1>
+      <div class="rating">{{rating_ko}}</div>
+    </header>
+
+    <section>
+      <h2>시나리오 관점</h2>
+      <div class="case-grid">
+        <article><h3>기준 시나리오</h3><p>{{base_case_ko}}</p></article>
+        <article><h3>상방 시나리오</h3><p>{{upside_case_ko}}</p></article>
+        <article><h3>하방 시나리오</h3><p>{{downside_case_ko}}</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>운영 KPI</h2>
+      <table class="kpi-table">
+        <thead>
+          <tr><th>지표</th><th>현재 해석</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>매출 품질</td><td>{{kpi_revenue}}</td></tr>
+          <tr><td>마진 구조</td><td>{{kpi_margin}}</td></tr>
+          <tr><td>디자인 윈</td><td>{{kpi_design_wins}}</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>리스크 매트릭스</h2>
+      <div class="risk-matrix">
+        <article><h3>공급</h3><p>{{risk_supply_ko}}</p></article>
+        <article><h3>고객</h3><p>{{risk_customer_ko}}</p></article>
+        <article><h3>경쟁</h3><p>{{risk_competition_ko}}</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>로드맵 점검</h2>
+      <div class="roadmap-strip">
+        <article><h3>0-6개월</h3><p>디자인 윈 파이프라인 대비 고객 전환율을 확인합니다.</p></article>
+        <article><h3>6-12개월</h3><p>공급사 약정 대비 매출총이익률 개선을 추적합니다.</p></article>
+        <article><h3>12개월 이후</h3><p>경쟁 반응을 반영해 기술 해자의 지속성을 재평가합니다.</p></article>
+      </div>
+    </section>
+
+    <p class="source-note">비상장 기업 리서치 템플릿. 출처 메모, 실사 유의사항, 샘플 상태: {{sample_notice_ko}}</p>
+  </article>
 </body>
 </html>
