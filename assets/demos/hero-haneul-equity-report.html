@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Haneul NPU Systems Private Company Research</title>
   <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
     @page { size: A4; margin: 16mm; }
     :root {
       --canvas: #fbfaf7;
@@ -15,7 +16,7 @@
       --band: #071829;
       --accent: #1863dc;
       --semiconductor: #0f766e;
-      --font: Pretendard, "Noto Sans KR", Inter, system-ui, sans-serif;
+      --font: Pretendard, "Noto Sans KR", "Segoe UI", sans-serif;
       --mono: "JetBrains Mono", ui-monospace, monospace;
     }
     [data-theme="dark"] {
@@ -37,7 +38,7 @@
       line-height: 1.48;
       margin: 0;
     }
-    @media screen { body { padding: 16mm; } }
+    @media screen { body { padding: clamp(20px, 4.8vw, 16mm); } }
     .page { display: grid; gap: 16px; }
     header {
       background: var(--band);
@@ -141,6 +142,42 @@
     @media print {
       html, body { background: transparent; }
       section, header { break-inside: avoid; }
+    }
+    @media screen and (max-width: 720px) {
+      html, body { overflow-x: hidden; }
+      body { font-size: 14px; }
+      header { padding: 20px; }
+      h1 { font-size: clamp(32px, 10vw, 42px); }
+      .rating {
+        max-width: 100%;
+        white-space: normal;
+        width: fit-content;
+      }
+      .case-grid,
+      .risk-matrix,
+      .roadmap-strip {
+        grid-template-columns: 1fr;
+      }
+      .kpi-table {
+        table-layout: fixed;
+      }
+      .kpi-table th:first-child,
+      .kpi-table td:first-child {
+        width: 38%;
+      }
+      .kpi-table th,
+      .kpi-table td,
+      .source-note {
+        overflow-wrap: anywhere;
+      }
+      h1,
+      h2,
+      h3,
+      p,
+      .notice,
+      .rating {
+        overflow-wrap: anywhere;
+      }
     }
   </style>
 </head>

@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
 :root {
   --canvas: #ffffff;
   --mineral: #f4f3ee;
@@ -9,7 +11,7 @@
   --green: #003c33;
   --blue: #1863dc;
   --coral: #ff7759;
-  --font-sans: Pretendard, "Noto Sans KR", Inter, system-ui, sans-serif;
+  --font-sans: Pretendard, "Noto Sans KR", "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
